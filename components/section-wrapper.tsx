@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ComponentProps, ReactNode } from "react";
+import type { HTMLMotionProps } from "framer-motion";
+import { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   className?: string;
-} & Omit<ComponentProps<"section">, "children" | "className">;
+} & Omit<HTMLMotionProps<"section">, "children" | "className">;
 
 export function SectionWrapper({ children, className = "", ...rest }: Props) {
   return (
