@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 20%, #d6f8f2 0%, transparent 35%),
+    radial-gradient(circle at 80% 0%, #ffecc6 0%, transparent 30%),
+    #f7f4ef;
+  color: #1b1b1a;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+.section-title {
+  @apply text-2xl font-semibold md:text-3xl;
+}
+
+.container-width {
+  @apply mx-auto max-w-6xl px-6;
+}

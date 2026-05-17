@@ -1,0 +1,10 @@
+<svg width="720" height="420" viewBox="0 0 720 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="420" rx="28" fill="#3F3F46"/>
+  <rect x="30" y="30" width="660" height="360" rx="20" fill="#52525B"/>
+  <text x="60" y="85" fill="#FAFAFA" font-family="Arial" font-size="28" font-weight="700">E-commerce App</text>
+  <rect x="60" y="120" width="180" height="120" rx="12" fill="#71717A"/>
+  <rect x="260" y="120" width="180" height="120" rx="12" fill="#71717A"/>
+  <rect x="460" y="120" width="180" height="120" rx="12" fill="#71717A"/>
+  <rect x="60" y="265" width="580" height="65" rx="14" fill="#18181B"/>
+  <text x="85" y="305" fill="#D4D4D8" font-family="Arial" font-size="20">Checkout  •  Orders  •  Tracking</text>
+</svg>
