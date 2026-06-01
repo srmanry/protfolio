@@ -38,95 +38,127 @@ const socials = [
 ];
 
 const heroHighlights = [
-  { title: "Clean Code", subtitle: "Maintainable & Scalable" },
-  { title: "Pixel Perfect UI", subtitle: "Modern & Responsive" },
-  { title: "Fast Delivery", subtitle: "On-time, Every Time" },
-  { title: "Reliable Support", subtitle: "Long-term Partnership" }
+  { icon: "</>", title: "Clean Code", subtitle: "Maintainable & scalable with best practice" },
+  { icon: "UI", title: "Pixel Perfect UI", subtitle: "Modern, responsive and user-friendly design" },
+  { icon: ">>", title: "Fast Delivery", subtitle: "On-time delivery with high quality" },
+  { icon: "24", title: "Reliable Support", subtitle: "Long-term support and clear communication" }
 ];
 
 export default function HomePage() {
   return (
     <main className="pb-20">
       <section className="relative overflow-hidden pb-12">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(159,231,223,0.38),transparent_34%),radial-gradient(circle_at_92%_16%,rgba(255,225,178,0.55),transparent_34%),linear-gradient(120deg,#fdfcf8_0%,#f7f9f9_55%,#fdf5e9_100%)]" />
-        <div className="absolute -bottom-24 left-0 right-0 h-40 bg-[radial-gradient(ellipse_at_center,rgba(126,207,202,0.22),transparent_70%)]" />
-        <div className="absolute left-10 top-[62%] hidden h-16 w-24 bg-[radial-gradient(#9ad1cc_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-50 md:block" />
-        <div className="absolute right-10 top-[66%] hidden h-16 w-24 bg-[radial-gradient(#e7b774_1.5px,transparent_1.5px)] [background-size:12px_12px] opacity-50 md:block" />
+        <div className="absolute inset-0 bg-[linear-gradient(145deg,#eff5fb_0%,#edf3fb_40%,#ddf0ff_100%)]" />
+        <div className="absolute right-[-12%] top-[-15%] h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(52,170,218,0.2),rgba(52,170,218,0.02)_72%)]" />
+        <div className="absolute left-[-14%] bottom-[-28%] h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(135,199,255,0.22),rgba(135,199,255,0.01)_72%)]" />
+        <div className="absolute right-12 top-36 hidden h-24 w-24 bg-[radial-gradient(#9ec8e6_2px,transparent_2px)] [background-size:14px_14px] opacity-65 lg:block" />
 
-        <header className="container-width relative pt-8 md:pt-10">
-          <nav className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 pb-4">
-            <div>
-              <p className="text-2xl font-bold tracking-tight text-ink">Md. Srsuman</p>
-              <p className="text-sm text-black/60">Flutter App Developer</p>
+        <header className="container-width relative pt-7 md:pt-9">
+          <nav className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-b from-[#0d788c] to-[#01506a] text-4xl font-bold text-white shadow-[0_8px_20px_rgba(6,101,133,0.3)]">
+                <span className="text-3xl">MS</span>
+              </div>
+              <div>
+                <p className="text-5xl font-bold leading-none text-ink md:text-[46px]">Md. Srsuman</p>
+                <p className="text-2xl leading-none text-[#51677f] md:mt-1 md:text-[38px]">
+                  Flutter App <span className="text-[#118ea0]">Developer</span>
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-6 text-sm font-semibold text-black/75">
-              <a href="#services" className="hover:text-black">Services</a>
-              <a href="#experience" className="hover:text-black">Experience</a>
-              <a href="#projects" className="hover:text-black">Projects</a>
-              <a href="#contact" className="hover:text-black">Contact</a>
+
+            <div className="hidden items-center gap-10 text-3xl font-semibold text-[#12151e] lg:flex">
+              <a href="#services" className="hover:text-[#118ea0]">Services</a>
+              <a href="#experience" className="hover:text-[#118ea0]">Experience</a>
+              <a href="#projects" className="hover:text-[#118ea0]">Projects</a>
+              <a href="#contact" className="hover:text-[#118ea0]">Contact</a>
+              <a
+                href="#contact"
+                className="rounded-2xl bg-gradient-to-r from-[#0a8ca1] to-[#066a89] px-10 py-4 text-white shadow-[0_10px_25px_rgba(8,123,152,0.28)]"
+              >
+                Hire Me
+              </a>
             </div>
           </nav>
         </header>
 
-        <div className="container-width relative pt-10 md:pt-14">
+        <div className="container-width relative pt-8 md:pt-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="grid items-center gap-8 md:grid-cols-[1.15fr_0.85fr]"
+            className="grid items-center gap-9 xl:grid-cols-[1.08fr_0.92fr]"
           >
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#0a7e86]">
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-3 rounded-full border border-[#b8deea] bg-[#ddf4f5] px-5 py-3 text-lg font-semibold uppercase tracking-[0.05em] text-[#0a6d83] md:text-xl">
+                <span className="h-3 w-3 rounded-full bg-[#10a5b0]" />
                 Available for freelance work
-              </p>
-              <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.02] text-ink md:text-7xl">
-                <span className="block">Professional Mobile</span>
-                <span className="block">App Solutions for</span>
-                <span className="block text-[#0f8c96]">Real Business</span>
-                <span className="block text-[#0f8c96]">Growth.</span>
+              </div>
+
+              <h1 className="mt-6 max-w-4xl text-6xl font-bold leading-[0.97] text-[#090f1d] md:text-8xl xl:text-[86px]">
+                <span className="block">Professional</span>
+                <span className="block">Mobile App Solutions</span>
+                <span className="block">for <span className="text-[#0d869e]">Real Business Growth.</span></span>
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-black/70 md:text-[1.08rem]">
+              <div className="mt-2 h-1.5 w-56 rounded-full bg-gradient-to-r from-[#0c88a3] to-[#1395af]" />
+
+              <p className="mt-7 max-w-3xl border-l-4 border-[#2091ab] pl-4 text-2xl leading-relaxed text-[#314760] md:text-[36px] md:leading-[1.35]">
                 I build high-quality Flutter applications with clean code, strong UX, and reliable delivery.
                 From startup MVP to enterprise features, I help teams ship faster with confidence.
               </p>
 
-              <div className="mt-7 flex flex-wrap items-center gap-4">
+              <div className="mt-9 flex flex-wrap items-center gap-5">
                 <a
                   href="#contact"
-                  className="rounded-xl bg-gradient-to-r from-[#0a7e86] to-[#0f969d] px-8 py-3 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(11,131,140,0.25)] transition hover:-translate-y-0.5"
+                  className="rounded-2xl bg-gradient-to-r from-[#0a7f96] to-[#075d78] px-10 py-4 text-3xl font-semibold text-white shadow-[0_12px_26px_rgba(5,112,142,0.28)]"
                 >
                   Hire Me
                 </a>
                 <a
                   href="#projects"
-                  className="rounded-xl border border-[#4ca6ad] bg-white/60 px-8 py-3 text-sm font-semibold text-[#0a6f77] transition hover:bg-white"
+                  className="rounded-2xl border-2 border-[#b4cce2] bg-white/80 px-10 py-4 text-3xl font-semibold text-[#111925]"
                 >
                   Download CV
                 </a>
               </div>
+
+              <div className="mt-8 flex items-center gap-4 text-[#3f5872]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#d8f0f5] text-2xl text-[#0b839c]">★</div>
+                <p className="text-2xl font-medium md:text-[30px]">Available for New Projects</p>
+              </div>
             </div>
 
-            <div className="mx-auto w-full max-w-[430px]">
-              <div className="relative mx-auto h-[300px] w-[300px] md:h-[500px] md:w-[430px]">
-                <div className="absolute left-1/2 top-4 h-[250px] w-[250px] -translate-x-1/2 rounded-full bg-[#f8ead3] md:h-[410px] md:w-[410px]" />
+            <div className="relative mx-auto w-full max-w-[700px] xl:mr-0">
+              <div className="relative h-[460px] w-full overflow-visible md:h-[600px] xl:h-[760px]">
+                <div className="absolute left-1/2 top-14 h-[360px] w-[360px] -translate-x-1/2 rounded-full border border-white/70 bg-[radial-gradient(circle,#30c0e4_0%,#0f93c8_56%,#136eaf_100%)] shadow-[0_20px_45px_rgba(37,133,199,0.35)] md:h-[470px] md:w-[470px] xl:h-[640px] xl:w-[640px]" />
+                <div className="absolute left-1/2 top-5 h-[430px] w-[430px] -translate-x-1/2 rounded-full border-2 border-white/70 md:h-[560px] md:w-[560px] xl:h-[720px] xl:w-[720px]" />
+                <div className="absolute right-6 top-28 rounded-full border border-[#d7e8f7] bg-white/85 px-5 py-3 text-2xl font-bold text-[#1695cf] shadow-[0_8px_18px_rgba(26,63,109,0.18)]">FL</div>
+                <div className="absolute left-2 top-[44%] rounded-full border border-[#d7e8f7] bg-white/90 px-5 py-3 text-2xl font-bold text-[#0f7da4] shadow-[0_8px_18px_rgba(26,63,109,0.18)]">M</div>
+                <div className="absolute bottom-16 right-4 rounded-full border border-[#d7e8f7] bg-white/90 px-5 py-3 text-2xl font-bold text-[#0f7da4] shadow-[0_8px_18px_rgba(26,63,109,0.18)]">&lt;/&gt;</div>
+
                 <Image
-                  src="/profile-me1.png"
+                  src="/hero-cutout.png"
                   alt="Portrait of Md. Srsuman"
-                  width={900}
-                  height={1300}
-                  className="relative z-10 mx-auto h-full w-full object-contain object-bottom"
+                  width={1200}
+                  height={1200}
+                  className="absolute bottom-0 left-1/2 z-10 h-[94%] w-auto max-w-none -translate-x-1/2 object-contain"
                   priority
                 />
               </div>
             </div>
           </motion.div>
 
-          <div className="relative z-10 mt-8 rounded-2xl border border-black/10 bg-white/80 p-4 shadow-[0_14px_30px_rgba(28,36,36,0.07)] backdrop-blur md:p-6">
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {heroHighlights.map((item) => (
-                <div key={item.title} className="border-black/10 lg:border-r lg:pr-4 last:border-none">
-                  <p className="text-lg font-semibold text-ink">{item.title}</p>
-                  <p className="text-sm text-black/60">{item.subtitle}</p>
+          <div className="relative z-20 mt-3 rounded-[28px] border border-[#d5e0ec] bg-white/95 p-5 shadow-[0_22px_40px_rgba(41,82,128,0.16)] md:p-8">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {heroHighlights.map((item, index) => (
+                <div key={item.title} className={`flex items-start gap-4 ${index < heroHighlights.length - 1 ? "xl:border-r xl:border-[#d5dfeb] xl:pr-6" : ""}`}>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#d9eff4] text-xl font-bold text-[#0f7891]">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-3xl font-semibold text-[#101a2a]">{item.title}</p>
+                    <p className="mt-1 text-xl leading-snug text-[#506782]">{item.subtitle}</p>
+                  </div>
                 </div>
               ))}
             </div>
