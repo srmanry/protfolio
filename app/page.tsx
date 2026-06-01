@@ -133,6 +133,11 @@ export default function HomePage() {
                   <h3 className="text-lg font-semibold text-ink">{project.title}</h3>
                 </div>
                 <p className="mt-2 text-sm text-black/70">{project.summary}</p>
+                {project.published && project.publishedDate ? (
+                  <p className="mt-2 text-xs font-semibold text-black/55">
+                    Published: {project.publishedDate}
+                  </p>
+                ) : null}
               </Link>
 
               <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">

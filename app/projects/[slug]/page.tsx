@@ -31,6 +31,11 @@ export default function ProjectDetailsPage({ params }: Props) {
         <div>
           <h1 className="text-3xl font-bold text-ink md:text-4xl">{project.title}</h1>
           <p className="mt-3 max-w-3xl text-black/75">{project.details}</p>
+          {project.published && project.publishedDate ? (
+            <p className="mt-2 text-sm font-semibold text-black/55">
+              Published: {project.publishedDate}
+            </p>
+          ) : null}
         </div>
       </div>
 
