@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/section-wrapper";
+import { LifecycleSection } from "@/components/lifecycle-section";
 import { projects } from "@/data/projects";
 import {
   Code2,
@@ -378,6 +379,9 @@ export default function HomePage() {
           ))}
         </div>
       </SectionWrapper>
+
+      {/* ═══ LIFECYCLE ═══════════════════════════════ */}
+      <LifecycleSection />
 
       {/* ═══ PROJECTS ════════════════════════════════ */}
       <section id="projects" className="container-width pt-20 md:pt-28">
