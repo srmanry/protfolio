@@ -399,7 +399,9 @@ export default function HomePage() {
           <h2 className="section-title">Projects</h2>
         </motion.div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {projects.map((project, i) => (
+          {projects.map((project, i) => {
+            const primaryLink = project.appStore ?? project.playStore ?? project.github ?? "#";
+            return (
             <motion.article
               key={project.slug}
               custom={i}
@@ -409,33 +411,42 @@ export default function HomePage() {
               variants={fadeUp}
               className="card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:border-[#F59E0B]/20"
             >
-              {/* screenshot */}
-              {project.screenshots[0] && (
-                <div className="relative h-48 w-full overflow-hidden bg-[#161616]">
-                  <Image
-                    src={project.screenshots[0]}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-top transition duration-300 group-hover:scale-105"
-                  />
+              {/* store badges banner */}
+              <div className="flex items-center justify-between bg-[#161616] px-5 py-3 border-b border-white/[0.05]">
+                <span className="text-2xl">{project.icon}</span>
+                <div className="flex items-center gap-2">
+                  {project.playStore && (
+                    <a href={project.playStore} target="_blank" rel="noreferrer"
+                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.07] px-2.5 py-1 text-[10px] font-semibold text-white/60 hover:bg-[#F59E0B]/20 hover:text-[#F59E0B] transition"
+                    >
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.5c.3.17.64.2.96.1l11.8-11.8-2.93-2.93L3.18 23.5zm15.4-13.5L5.23 2.57A1 1 0 003.5 3.5v17a1 1 0 001.73.67l13.35-7.76a1 1 0 000-1.41zM3.98.4L13.5 9.93 16.43 7 4.95.1A1 1 0 003.98.4zM20.5 10.76l-2.6-1.5-3.2 3.2 3.2 3.2 2.6-1.5a1.5 1.5 0 000-3.4z"/></svg>
+                      Play Store
+                    </a>
+                  )}
+                  {project.appStore && (
+                    <a href={project.appStore} target="_blank" rel="noreferrer"
+                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.07] px-2.5 py-1 text-[10px] font-semibold text-white/60 hover:bg-[#F59E0B]/20 hover:text-[#F59E0B] transition"
+                    >
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                      App Store
+                    </a>
+                  )}
                 </div>
-              )}
+              </div>
+
               <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">{project.icon}</span>
-                  <div>
-                    <Link href={`/projects/${project.slug}`} className="group/link flex items-center gap-1">
-                      <h3 className="text-[0.95rem] font-bold text-white group-hover/link:text-[#F59E0B]">
-                        {project.title}
-                      </h3>
-                      <ArrowUpRight size={14} className="opacity-0 transition group-hover/link:opacity-100 text-[#F59E0B]" />
-                    </Link>
-                    {project.published && project.publishedDate && (
-                      <p className="mt-0.5 text-xs font-medium text-[#F59E0B]/50">
-                        Published: {project.publishedDate}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <a href={primaryLink} target="_blank" rel="noreferrer" className="group/link flex items-center gap-1">
+                    <h3 className="text-[0.95rem] font-bold text-white group-hover/link:text-[#F59E0B] transition">
+                      {project.title}
+                    </h3>
+                    <ArrowUpRight size={14} className="opacity-0 transition group-hover/link:opacity-100 text-[#F59E0B]" />
+                  </a>
+                  {project.published && project.publishedDate && (
+                    <p className="mt-0.5 text-xs font-medium text-[#F59E0B]/50">
+                      Published: {project.publishedDate}
+                    </p>
+                  )}
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-white/55">{project.summary}</p>
 
@@ -481,7 +492,8 @@ export default function HomePage() {
                 </div>
               </div>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
