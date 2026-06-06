@@ -16,12 +16,12 @@ export type ProjectItem = {
 export const projects: ProjectItem[] = [
   {
     slug: "spotem",
-    title: "Spotem",
+    title: "Spotem365",
     icon: "📍",
-    summary: "A location-based social app that lets users spot, share, and discover moments around them in real time.",
+    summary: "A real-time community reporting app — share and discover traffic, safety, and local events happening around you.",
     details:
-      "Spotem is a real-time location-based platform where users can spot and share events, people, or moments at specific locations. Built with Flutter for cross-platform performance, the app features live maps, real-time feeds, user profiles, and push notifications to keep users connected with what's happening around them.",
-    stack: ["Flutter", "Dart", "Firebase", "REST API", "Google Maps"],
+      "Spotem365 lets users share and discover real-time events happening around them — from traffic alerts to safety notices and community updates. The app uses live location to display nearby reports and auto-fills addresses when creating posts. Built with Flutter for a smooth cross-platform experience on iOS and Android, featuring category filters, real-time feeds, and a privacy-focused location model that never stores or tracks user position.",
+    stack: ["Flutter", "Dart", "Firebase", "Google Maps", "REST API"],
     screenshots: [],
     playStore: "https://play.google.com/store/apps/details?id=com.jay.spotem",
     appStore: "https://apps.apple.com/us/app/spotem365/id6753931786",
@@ -32,9 +32,9 @@ export const projects: ProjectItem[] = [
     slug: "sharpos-mobile",
     title: "Sharpos Mobile",
     icon: "🛒",
-    summary: "A powerful mobile POS and business management app for retail and restaurant operations.",
+    summary: "A mobile POS companion app for real-time sales monitoring, inventory tracking, and remote business management.",
     details:
-      "Sharpos Mobile brings the full power of the Sharpos point-of-sale system to Android and iOS. It enables business owners and staff to manage orders, track inventory, process payments, and generate reports — all from a handheld device. Built with Flutter for a seamless cross-platform experience.",
+      "Sharpos Mobile is a powerful POS system companion that gives business owners and managers real-time visibility into their operations from anywhere. The app delivers live sales data, inventory tracking, detailed analytics, and daily operations management — all integrated seamlessly with the Sharpos POS system. Built with Flutter and optimized for iOS and Android, it features a clean, user-friendly interface designed to streamline decision-making on the go.",
     stack: ["Flutter", "Dart", "REST API", "Clean Architecture", "GetX"],
     screenshots: [],
     playStore: "https://play.google.com/store/apps/details?id=com.sharposmobile.ivangrafa",
@@ -46,9 +46,9 @@ export const projects: ProjectItem[] = [
     slug: "build-studio",
     title: "Build Studio",
     icon: "🏗️",
-    summary: "A construction and project management app designed to streamline build workflows on the go.",
+    summary: "A project management app built for construction and interior design teams to track, share, and collaborate in one place.",
     details:
-      "Build Studio helps construction professionals manage projects, track progress, assign tasks, and communicate with teams directly from their iPhone. The app features project timelines, photo documentation, site reports, and real-time team updates — all in a clean, intuitive Flutter interface.",
+      "Build Studio is a productivity app designed specifically for construction and interior design professionals. It brings project management, progress tracking, document organization, and team collaboration into a single centralized platform. Built with Flutter and available on iPhone, iPad, and Mac, the app enables teams to share updates, manage timelines, and stay aligned — from the office or on-site.",
     stack: ["Flutter", "Dart", "Firebase", "Bloc", "REST API"],
     screenshots: [],
     appStore: "https://apps.apple.com/us/app/build-studio/id6760635211",
@@ -58,11 +58,11 @@ export const projects: ProjectItem[] = [
   {
     slug: "nvf",
     title: "NVF",
-    icon: "⚡",
-    summary: "A sleek utility app delivering fast, focused features with a clean and minimal Flutter UI.",
+    icon: "🎨",
+    summary: "A project management app tailored for interior design teams — manage projects, track progress, and collaborate efficiently.",
     details:
-      "NVF is a focused iOS utility app built with Flutter, delivering a smooth and responsive user experience. The app emphasizes performance, clean architecture, and minimal design — ensuring users get exactly what they need without any friction.",
-    stack: ["Flutter", "Dart", "Firebase", "Clean Architecture"],
+      "NVF is a productivity app built for interior design teams that need a focused, efficient way to manage their projects. It helps users track progress across multiple projects, share updates with team members, organize documents, and collaborate in real time — all from one place. Developed with Flutter and available across iPhone, iPad, and Mac, NVF features built-in messaging and a clean interface crafted for design professionals.",
+    stack: ["Flutter", "Dart", "Firebase", "Clean Architecture", "Bloc"],
     screenshots: [],
     appStore: "https://apps.apple.com/us/app/nvf/id6760635896",
     published: true,
