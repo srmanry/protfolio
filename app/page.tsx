@@ -219,7 +219,13 @@ export default function HomePage() {
 
               {/* dark circle bg */}
               <div className="relative h-[300px] w-[300px] md:h-[420px] md:w-[420px]">
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1a1000] to-[#2a1f00] border border-[#F59E0B]/20" />
+                {/* gold ring */}
+                <div className="absolute inset-0 rounded-full border-[3px] border-[#F59E0B]/70 shadow-[0_0_32px_rgba(245,158,11,0.25),inset_0_0_32px_rgba(245,158,11,0.05)]" />
+                {/* dashed outer ring */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 420 420">
+                  <circle cx="210" cy="210" r="207" fill="none" stroke="#F59E0B" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="6 8" />
+                </svg>
+                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1a1000] to-[#2a1f00]" />
 
                 {/* photo */}
                 <Image
