@@ -4,27 +4,56 @@
 
 :root {
   color-scheme: light;
+  --teal: #0a7e86;
+  --teal-mid: #0f969d;
+  --teal-light: #e0f5f5;
+  --ink: #0d1f22;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 body {
-  background:
-    radial-gradient(circle at 20% 20%, #d6f8f2 0%, transparent 35%),
-    radial-gradient(circle at 80% 0%, #ffecc6 0%, transparent 30%),
-    #f7f4ef;
-  color: #1b1b1a;
+  background: #f0f6f7;
+  color: var(--ink);
   font-family: "Poppins", "Segoe UI", sans-serif;
 }
 
+.ink { color: var(--ink); }
+.accent { color: var(--teal); }
+
 .section-title {
-  @apply text-2xl font-semibold md:text-3xl;
+  @apply text-3xl font-bold md:text-4xl;
+  color: var(--ink);
+}
+
+.section-label {
+  @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em];
+  color: var(--teal);
 }
 
 .container-width {
-  @apply mx-auto max-w-6xl px-6;
+  @apply mx-auto max-w-6xl px-5 md:px-8;
+}
+
+.card {
+  @apply rounded-2xl border border-black/[0.07] bg-white shadow-[0_4px_24px_rgba(10,126,134,0.06)];
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#0a7e86] to-[#0ea3ac] px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(10,126,134,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(10,126,134,0.38)];
+}
+
+.btn-outline {
+  @apply inline-flex items-center gap-2 rounded-xl border border-[#0a7e86]/40 bg-white px-7 py-3 text-sm font-semibold text-[#0a7e86] transition-all duration-200 hover:border-[#0a7e86] hover:bg-[#e0f5f5];
+}
+
+/* dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, #9ad1cc 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
 }
