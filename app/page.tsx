@@ -483,13 +483,13 @@ export default function HomePage() {
         >
           <div className="mx-auto max-w-xl text-center">
             <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/90">
-              Let's Work Together
+              Let&apos;s Work Together
             </span>
             <h2 className="mt-4 text-3xl font-extrabold text-white md:text-4xl">
               Have a project in mind?
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-white/75">
-              I'm available for freelance projects, contract work, and long-term collaborations.
+              I&apos;m available for freelance projects, contract work, and long-term collaborations.
               Feel free to reach out anytime.
             </p>
 
