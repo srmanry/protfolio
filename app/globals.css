@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --teal: #0a7e86;
-  --teal-mid: #0f969d;
-  --teal-light: #e0f5f5;
-  --ink: #0d1f22;
+  color-scheme: dark;
+  --gold: #F59E0B;
+  --gold-mid: #FBBF24;
+  --gold-light: #1a1500;
+  --ink: #F9FAFB;
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-surface: #161616;
 }
 
 html,
@@ -18,13 +21,13 @@ body {
 }
 
 body {
-  background: #f0f6f7;
+  background: var(--bg);
   color: var(--ink);
   font-family: "Poppins", "Segoe UI", sans-serif;
 }
 
 .ink { color: var(--ink); }
-.accent { color: var(--teal); }
+.accent { color: var(--gold); }
 
 .section-title {
   @apply text-3xl font-bold md:text-4xl;
@@ -33,7 +36,7 @@ body {
 
 .section-label {
   @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em];
-  color: var(--teal);
+  color: var(--gold);
 }
 
 .container-width {
@@ -41,19 +44,19 @@ body {
 }
 
 .card {
-  @apply rounded-2xl border border-black/[0.07] bg-white shadow-[0_4px_24px_rgba(10,126,134,0.06)];
+  @apply rounded-2xl border border-white/[0.07] bg-[#111111] shadow-[0_4px_24px_rgba(245,158,11,0.06)];
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#0a7e86] to-[#0ea3ac] px-7 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(10,126,134,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(10,126,134,0.38)];
+  @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#F59E0B] to-[#FBBF24] px-7 py-3 text-sm font-semibold text-black shadow-[0_8px_24px_rgba(245,158,11,0.30)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(245,158,11,0.45)];
 }
 
 .btn-outline {
-  @apply inline-flex items-center gap-2 rounded-xl border border-[#0a7e86]/40 bg-white px-7 py-3 text-sm font-semibold text-[#0a7e86] transition-all duration-200 hover:border-[#0a7e86] hover:bg-[#e0f5f5];
+  @apply inline-flex items-center gap-2 rounded-xl border border-[#F59E0B]/40 bg-transparent px-7 py-3 text-sm font-semibold text-[#F59E0B] transition-all duration-200 hover:border-[#F59E0B] hover:bg-[#F59E0B]/10;
 }
 
 /* dot grid pattern */
 .dot-grid {
-  background-image: radial-gradient(circle, #9ad1cc 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, #F59E0B 1.5px, transparent 1.5px);
   background-size: 14px 14px;
 }

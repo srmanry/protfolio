@@ -29,14 +29,14 @@ import {
 /* ─── Data ─────────────────────────────────────── */
 
 const skills = [
-  { label: "Flutter", color: "bg-[#e0f5f5] text-[#0a7e86]" },
-  { label: "Dart", color: "bg-[#e8f0fe] text-[#1a56db]" },
-  { label: "Firebase", color: "bg-[#fff3e0] text-[#e65100]" },
-  { label: "REST API", color: "bg-[#f3e8ff] text-[#7c3aed]" },
-  { label: "Clean Architecture", color: "bg-[#fce7f3] text-[#be185d]" },
-  { label: "CI/CD", color: "bg-[#ecfdf5] text-[#065f46]" },
-  { label: "GetX", color: "bg-[#fef3c7] text-[#92400e]" },
-  { label: "Bloc", color: "bg-[#e0f2fe] text-[#0369a1]" },
+  { label: "Flutter", color: "bg-[#1a1200] text-[#F59E0B]" },
+  { label: "Dart", color: "bg-[#0a0f1e] text-[#60A5FA]" },
+  { label: "Firebase", color: "bg-[#1a0d00] text-[#FB923C]" },
+  { label: "REST API", color: "bg-[#130a1e] text-[#C084FC]" },
+  { label: "Clean Architecture", color: "bg-[#1a0a10] text-[#F472B6]" },
+  { label: "CI/CD", color: "bg-[#041a0e] text-[#34D399]" },
+  { label: "GetX", color: "bg-[#1a1200] text-[#FCD34D]" },
+  { label: "Bloc", color: "bg-[#041018] text-[#38BDF8]" },
 ];
 
 const services = [
@@ -106,34 +106,34 @@ export default function HomePage() {
   return (
     <main className="overflow-x-hidden pb-24">
       {/* ═══ HERO ════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#e8f7f8] via-[#f0f6f7] to-[#fdf6ec]">
+      <section className="relative overflow-hidden bg-[#0a0a0a]">
         {/* background blobs */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 -top-24 h-[500px] w-[500px] rounded-full bg-[#b2e8e6]/30 blur-3xl" />
-          <div className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-[#ffd89b]/25 blur-3xl" />
-          <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#7ec8c4]/15 blur-3xl" />
-          <div className="dot-grid absolute left-8 bottom-32 h-28 w-36 opacity-40" />
-          <div className="dot-grid absolute right-8 top-40 h-28 w-36 opacity-30" />
+          <div className="absolute -left-24 -top-24 h-[500px] w-[500px] rounded-full bg-[#F59E0B]/10 blur-3xl" />
+          <div className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-[#FBBF24]/8 blur-3xl" />
+          <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#F59E0B]/6 blur-3xl" />
+          <div className="dot-grid absolute left-8 bottom-32 h-28 w-36 opacity-20" />
+          <div className="dot-grid absolute right-8 top-40 h-28 w-36 opacity-15" />
         </div>
 
         {/* ── Navbar ── */}
         <header className="container-width relative z-20 pt-7">
-          <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-[#0a7e86]/10 pb-5">
+          <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-5">
             {/* brand */}
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#0a7e86] to-[#0ea3ac] text-sm font-bold text-white shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#F59E0B] to-[#FBBF24] text-sm font-bold text-black shadow-md">
                 MS
               </div>
               <div>
-                <p className="text-[1.05rem] font-bold leading-none text-[#0d1f22]">Md. Srsuman</p>
-                <p className="text-xs text-black/50">Flutter App Developer</p>
+                <p className="text-[1.05rem] font-bold leading-none text-white">Md. Srsuman</p>
+                <p className="text-xs text-white/40">Flutter App Developer</p>
               </div>
             </div>
 
             {/* links */}
-            <div className="hidden items-center gap-7 text-sm font-medium text-black/65 md:flex">
+            <div className="hidden items-center gap-7 text-sm font-medium text-white/50 md:flex">
               {["Services", "Experience", "Projects", "Contact"].map((l) => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="transition hover:text-[#0a7e86]">
+                <a key={l} href={`#${l.toLowerCase()}`} className="transition hover:text-[#F59E0B]">
                   {l}
                 </a>
               ))}
@@ -152,18 +152,18 @@ export default function HomePage() {
             {/* left */}
             <motion.div initial="hidden" animate="show" variants={fadeUp}>
               {/* badge */}
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#0a7e86]/20 bg-white/80 px-4 py-1.5 text-xs font-semibold text-[#0a7e86] shadow-sm backdrop-blur">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-[#0a7e86]" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/25 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold text-[#F59E0B] backdrop-blur">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[#F59E0B]" />
                 Available for Freelance Work
               </span>
 
-              <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#0d1f22] md:text-[3.75rem]">
+              <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-[3.75rem]">
                 Professional
                 <br />
                 Mobile App Solutions
                 <br />
                 for{" "}
-                <span className="relative inline-block text-[#0a7e86]">
+                <span className="relative inline-block text-[#F59E0B]">
                   Real Business Growth.
                   <svg
                     className="absolute -bottom-1.5 left-0 w-full"
@@ -174,7 +174,7 @@ export default function HomePage() {
                   >
                     <path
                       d="M2 5.5 C100 1.5, 200 7.5, 398 3"
-                      stroke="#0a7e86"
+                      stroke="#F59E0B"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
@@ -182,7 +182,7 @@ export default function HomePage() {
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-xl border-l-[3px] border-[#0a7e86]/40 pl-4 text-[0.97rem] leading-relaxed text-black/65">
+              <p className="mt-6 max-w-xl border-l-[3px] border-[#F59E0B]/40 pl-4 text-[0.97rem] leading-relaxed text-white/55">
                 I build high-quality Flutter applications with clean code, strong UX, and reliable delivery.
                 From startup MVP to enterprise features, I help teams ship faster with confidence.
               </p>
@@ -196,12 +196,12 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <div className="mt-6 flex items-center gap-2 text-sm text-black/55">
-                <Star size={15} className="text-[#f59e0b]" fill="#f59e0b" />
+              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+                <Star size={15} className="text-[#F59E0B]" fill="#F59E0B" />
                 Available for New Projects
-                <svg width="36" height="20" viewBox="0 0 36 20" fill="none" className="ml-1 opacity-50">
-                  <path d="M2 17 C8 4, 28 0, 34 9" stroke="#0a7e86" strokeWidth="1.5" strokeLinecap="round" />
-                  <path d="M30 6 L34 9 L31 13" stroke="#0a7e86" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <svg width="36" height="20" viewBox="0 0 36 20" fill="none" className="ml-1 opacity-40">
+                  <path d="M2 17 C8 4, 28 0, 34 9" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M30 6 L34 9 L31 13" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </motion.div>
@@ -214,11 +214,11 @@ export default function HomePage() {
               className="relative mx-auto flex items-center justify-center"
             >
               {/* outer glow ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#7ec8c4]/40 to-[#b2e8e6]/30 blur-2xl" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#F59E0B]/20 to-[#FBBF24]/10 blur-2xl" />
 
-              {/* teal circle bg */}
+              {/* dark circle bg */}
               <div className="relative h-[300px] w-[300px] md:h-[420px] md:w-[420px]">
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#0a7e86] to-[#0ea3ac] opacity-85" />
+                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1a1000] to-[#2a1f00] border border-[#F59E0B]/20" />
 
                 {/* photo */}
                 <Image
@@ -231,23 +231,23 @@ export default function HomePage() {
                 />
 
                 {/* floating badges */}
-                <div className="absolute -right-4 top-[18%] z-20 flex items-center gap-2 rounded-2xl bg-white px-3.5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#e0f5f5]">
+                <div className="absolute -right-4 top-[18%] z-20 flex items-center gap-2 rounded-2xl bg-[#111111] border border-white/[0.07] px-3.5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F59E0B]/15">
                     <svg width="18" height="18" viewBox="0 0 50 50" fill="none">
-                      <path d="M25 5L5 45h40L25 5z" fill="#0a7e86" opacity="0.15" />
-                      <path d="M25 5L5 45h40L25 5z" stroke="#0a7e86" strokeWidth="3" strokeLinejoin="round" />
-                      <path d="M14 35l11-20 11 20" stroke="#0a7e86" strokeWidth="2.5" strokeLinecap="round" />
+                      <path d="M25 5L5 45h40L25 5z" fill="#F59E0B" opacity="0.15" />
+                      <path d="M25 5L5 45h40L25 5z" stroke="#F59E0B" strokeWidth="3" strokeLinejoin="round" />
+                      <path d="M14 35l11-20 11 20" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-[#0d1f22]">Flutter</span>
+                  <span className="text-xs font-semibold text-white">Flutter</span>
                 </div>
 
-                <div className="absolute -left-5 top-[40%] z-20 flex items-center justify-center rounded-2xl bg-white p-3 shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
-                  <Smartphone size={20} className="text-[#0a7e86]" />
+                <div className="absolute -left-5 top-[40%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
+                  <Smartphone size={20} className="text-[#F59E0B]" />
                 </div>
 
-                <div className="absolute -right-6 bottom-[28%] z-20 flex items-center justify-center rounded-2xl bg-white p-3 shadow-[0_8px_28px_rgba(0,0,0,0.12)]">
-                  <Code2 size={20} className="text-[#0a7e86]" />
+                <div className="absolute -right-6 bottom-[28%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
+                  <Code2 size={20} className="text-[#F59E0B]" />
                 </div>
               </div>
             </motion.div>
@@ -258,20 +258,20 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-12 rounded-2xl border border-[#0a7e86]/10 bg-white/80 p-5 shadow-[0_8px_32px_rgba(10,126,134,0.08)] backdrop-blur md:p-6"
+            className="mt-12 rounded-2xl border border-white/[0.07] bg-[#111111] p-5 shadow-[0_8px_32px_rgba(245,158,11,0.06)] md:p-6"
           >
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {highlights.map(({ Icon, title, sub }, i) => (
                 <div
                   key={title}
-                  className={`flex items-start gap-4 ${i < highlights.length - 1 ? "lg:border-r lg:border-black/8 lg:pr-6" : ""}`}
+                  className={`flex items-start gap-4 ${i < highlights.length - 1 ? "lg:border-r lg:border-white/[0.06] lg:pr-6" : ""}`}
                 >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#e0f5f5]">
-                    <Icon size={18} className="text-[#0a7e86]" />
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#F59E0B]/15">
+                    <Icon size={18} className="text-[#F59E0B]" />
                   </div>
                   <div>
-                    <p className="text-[0.9rem] font-semibold text-[#0d1f22]">{title}</p>
-                    <p className="mt-0.5 whitespace-pre-line text-xs leading-snug text-black/55">{sub}</p>
+                    <p className="text-[0.9rem] font-semibold text-white">{title}</p>
+                    <p className="mt-0.5 whitespace-pre-line text-xs leading-snug text-white/40">{sub}</p>
                   </div>
                 </div>
               ))}
@@ -295,14 +295,14 @@ export default function HomePage() {
               whileInView="show"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="card group flex flex-col gap-4 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(10,126,134,0.13)]"
+              className="card group flex flex-col gap-4 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:border-[#F59E0B]/20"
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e0f5f5] transition group-hover:bg-[#0a7e86]">
-                <Icon size={20} className="text-[#0a7e86] transition group-hover:text-white" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F59E0B]/15 transition group-hover:bg-[#F59E0B]">
+                <Icon size={20} className="text-[#F59E0B] transition group-hover:text-black" />
               </div>
               <div>
-                <h3 className="text-[0.95rem] font-semibold text-[#0d1f22]">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-black/60">{desc}</p>
+                <h3 className="text-[0.95rem] font-semibold text-white">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/50">{desc}</p>
               </div>
             </motion.div>
           ))}
@@ -317,7 +317,7 @@ export default function HomePage() {
         </motion.div>
         <div className="relative mt-8 space-y-5">
           {/* vertical line */}
-          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-[#0a7e86]/40 to-transparent" />
+          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-[#F59E0B]/40 to-transparent" />
 
           {experiences.map((item, i) => (
             <motion.article
@@ -330,21 +330,21 @@ export default function HomePage() {
               className="relative pl-12"
             >
               {/* dot */}
-              <div className="absolute left-[11px] top-5 h-4 w-4 rounded-full border-2 border-[#0a7e86] bg-white" />
+              <div className="absolute left-[11px] top-5 h-4 w-4 rounded-full border-2 border-[#F59E0B] bg-[#0a0a0a]" />
               <div className="card p-6">
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <div>
-                    <h3 className="text-base font-bold text-[#0d1f22]">{item.company}</h3>
-                    <p className="mt-0.5 text-sm font-semibold text-[#0a7e86]">{item.role}</p>
+                    <h3 className="text-base font-bold text-white">{item.company}</h3>
+                    <p className="mt-0.5 text-sm font-semibold text-[#F59E0B]">{item.role}</p>
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-lg bg-[#e0f5f5] px-3 py-1 text-xs font-medium text-[#0a7e86]">
+                  <span className="flex items-center gap-1.5 rounded-lg bg-[#F59E0B]/15 px-3 py-1 text-xs font-medium text-[#F59E0B]">
                     <Briefcase size={11} /> {item.duration}
                   </span>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-black/65">{item.details}</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/55">{item.details}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {item.tags.map((t) => (
-                    <span key={t} className="rounded-md bg-[#f0f6f7] px-2.5 py-1 text-xs font-medium text-[#0a7e86]">
+                    <span key={t} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs font-medium text-[#F59E0B]">
                       {t}
                     </span>
                   ))}
@@ -370,7 +370,7 @@ export default function HomePage() {
               whileInView="show"
               viewport={{ once: true }}
               variants={fadeUp}
-              className={`${color} flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold shadow-sm transition hover:scale-105`}
+              className={`${color} flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold shadow-sm transition hover:scale-105 border border-white/[0.05]`}
             >
               <CheckCircle2 size={14} />
               {label}
@@ -394,11 +394,11 @@ export default function HomePage() {
               whileInView="show"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(10,126,134,0.13)]"
+              className="card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:border-[#F59E0B]/20"
             >
               {/* screenshot */}
               {project.screenshots[0] && (
-                <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-[#e0f5f5] to-[#f0f6f7]">
+                <div className="relative h-48 w-full overflow-hidden bg-[#161616]">
                   <Image
                     src={project.screenshots[0]}
                     alt={project.title}
@@ -412,23 +412,23 @@ export default function HomePage() {
                   <span className="text-2xl">{project.icon}</span>
                   <div>
                     <Link href={`/projects/${project.slug}`} className="group/link flex items-center gap-1">
-                      <h3 className="text-[0.95rem] font-bold text-[#0d1f22] group-hover/link:text-[#0a7e86]">
+                      <h3 className="text-[0.95rem] font-bold text-white group-hover/link:text-[#F59E0B]">
                         {project.title}
                       </h3>
-                      <ArrowUpRight size={14} className="opacity-0 transition group-hover/link:opacity-100 text-[#0a7e86]" />
+                      <ArrowUpRight size={14} className="opacity-0 transition group-hover/link:opacity-100 text-[#F59E0B]" />
                     </Link>
                     {project.published && project.publishedDate && (
-                      <p className="mt-0.5 text-xs font-medium text-[#0a7e86]/60">
+                      <p className="mt-0.5 text-xs font-medium text-[#F59E0B]/50">
                         Published: {project.publishedDate}
                       </p>
                     )}
                   </div>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-black/65">{project.summary}</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/55">{project.summary}</p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.stack.map((s) => (
-                    <span key={s} className="rounded-md bg-[#f0f6f7] px-2.5 py-1 text-xs font-medium text-[#0a7e86]">
+                    <span key={s} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs font-medium text-[#F59E0B]">
                       {s}
                     </span>
                   ))}
@@ -440,7 +440,7 @@ export default function HomePage() {
                       href={project.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-black/15 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0d1f22] transition hover:border-[#0a7e86] hover:text-[#0a7e86]"
+                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
                     >
                       <Code2 size={12} /> GitHub
                     </a>
@@ -450,7 +450,7 @@ export default function HomePage() {
                       href={project.playStore}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-black/15 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0d1f22] transition hover:border-[#0a7e86] hover:text-[#0a7e86]"
+                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
                     >
                       <ExternalLink size={12} /> Play Store
                     </a>
@@ -460,7 +460,7 @@ export default function HomePage() {
                       href={project.appStore}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-black/15 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#0d1f22] transition hover:border-[#0a7e86] hover:text-[#0a7e86]"
+                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
                     >
                       <ExternalLink size={12} /> App Store
                     </a>
@@ -479,16 +479,16 @@ export default function HomePage() {
           whileInView="show"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="rounded-3xl bg-gradient-to-br from-[#0a7e86] to-[#0ea3ac] p-10 md:p-14"
+          className="rounded-3xl bg-gradient-to-br from-[#F59E0B] to-[#FBBF24] p-10 md:p-14"
         >
           <div className="mx-auto max-w-xl text-center">
-            <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white/90">
+            <span className="inline-block rounded-full bg-black/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-black/70">
               Let&apos;s Work Together
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold text-white md:text-4xl">
+            <h2 className="mt-4 text-3xl font-extrabold text-black md:text-4xl">
               Have a project in mind?
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-white/75">
+            <p className="mt-3 text-sm leading-relaxed text-black/60">
               I&apos;m available for freelance projects, contract work, and long-term collaborations.
               Feel free to reach out anytime.
             </p>
@@ -500,7 +500,7 @@ export default function HomePage() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex items-center gap-2 rounded-xl bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-[#0a7e86]"
+                  className="flex items-center gap-2 rounded-xl bg-black/15 px-5 py-2.5 text-sm font-semibold text-black/80 backdrop-blur transition hover:bg-black hover:text-[#F59E0B]"
                 >
                   <Icon size={15} /> {label}
                 </a>
@@ -509,16 +509,16 @@ export default function HomePage() {
 
             <a
               href="mailto:yourname@gmail.com"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-[#0a7e86] shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition hover:shadow-[0_12px_32px_rgba(0,0,0,0.18)]"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-black px-8 py-3.5 text-sm font-bold text-[#F59E0B] shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)]"
             >
-              <Zap size={15} fill="#0a7e86" /> Get in Touch
+              <Zap size={15} fill="#F59E0B" /> Get in Touch
             </a>
           </div>
         </motion.div>
       </SectionWrapper>
 
       {/* ═══ FOOTER ══════════════════════════════════ */}
-      <footer className="container-width mt-16 border-t border-black/8 py-6 text-center text-xs text-black/40">
+      <footer className="container-width mt-16 border-t border-white/[0.06] py-6 text-center text-xs text-white/25">
         © {new Date().getFullYear()} Md. Srsuman · Built with Next.js & Flutter passion
       </footer>
     </main>
