@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Lightbulb, Pencil, Code2, CheckCircle2, Rocket, Headphones,
-  Play, Layers, RefreshCw, Zap, Trash2, GitBranch,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -19,21 +18,12 @@ interface Phase {
 /* ─── Data ─────────────────────────────────────── */
 
 const appPhases: Phase[] = [
-  { Icon: Lightbulb,    title: "Discovery",    desc: "Client requirements, project scope, tech stack decision, and feasibility analysis." },
-  { Icon: Pencil,       title: "UI/UX Design", desc: "Wireframes, prototypes, and pixel-perfect design using user-centered principles." },
-  { Icon: Code2,        title: "Development",  desc: "Clean Flutter code with state management, REST API integration, and best practices." },
-  { Icon: CheckCircle2, title: "Testing & QA", desc: "Unit tests, widget tests, and thorough manual QA on Android and iOS devices." },
-  { Icon: Rocket,       title: "Deployment",   desc: "Play Store & App Store submission, CI/CD pipeline setup, and production launch." },
-  { Icon: Headphones,   title: "Maintenance",  desc: "Bug fixes, performance tuning, feature updates, and long-term technical support." },
-];
-
-const flutterPhases: Phase[] = [
-  { Icon: Play,       title: "runApp()",          desc: "The entry point of every Flutter app. Inflates the root widget and attaches it to the screen." },
-  { Icon: Layers,     title: "createState()",     desc: "Called when a StatefulWidget is inserted into the tree. Creates the mutable State object." },
-  { Icon: GitBranch,  title: "initState()",       desc: "Called once after the widget is created. Ideal for initializing controllers, streams, and subscriptions." },
-  { Icon: Code2,      title: "build()",           desc: "Describes the UI at any given moment. Called whenever setState() triggers a rebuild." },
-  { Icon: Zap,        title: "setState()",        desc: "Notifies the framework that internal state has changed and schedules a rebuild of the widget." },
-  { Icon: Trash2,     title: "dispose()",         desc: "Called when the widget is removed from the tree. Clean up controllers, streams, and listeners here." },
+  { Icon: Lightbulb,    title: "Understand", desc: "I start by understanding the goal, the people involved, and the best way to move the work forward." },
+  { Icon: Pencil,       title: "Plan",       desc: "I organize tasks, priorities, and expectations so the work stays clear and manageable." },
+  { Icon: Code2,        title: "Execute",    desc: "I handle the actual work with focus, attention to detail, and a practical mindset." },
+  { Icon: CheckCircle2, title: "Review",     desc: "I check quality, fix issues early, and make sure the result is dependable and useful." },
+  { Icon: Rocket,       title: "Deliver",    desc: "I communicate progress clearly and deliver work in a way that supports team or business goals." },
+  { Icon: Headphones,   title: "Support",    desc: "I stay available for follow-up, improvements, and ongoing responsibilities after delivery." },
 ];
 
 /* ─── Circle helpers ─────────────────────────── */
@@ -213,9 +203,5 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
 /* ─── Exports ────────────────────────────────── */
 
 export function LifecycleSection() {
-  return <LifecycleCircle phases={appPhases} label="How I Work" title="App Development Lifecycle" />;
-}
-
-export function FlutterLifecycleSection() {
-  return <LifecycleCircle phases={flutterPhases} label="Flutter Internals" title="Flutter Widget Lifecycle" />;
+  return <LifecycleCircle phases={appPhases} label="How I Work" title="My Work Approach" />;
 }

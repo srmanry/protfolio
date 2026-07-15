@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/section-wrapper";
-import { LifecycleSection, FlutterLifecycleSection } from "@/components/lifecycle-section";
+import { LifecycleSection } from "@/components/lifecycle-section";
 import { projects } from "@/data/projects";
 import {
   Code2,
@@ -18,7 +17,6 @@ import {
   Download,
   Mail,
   ArrowUpRight,
-  Smartphone,
   Zap,
   Shield,
   Globe,
@@ -30,55 +28,55 @@ import {
 /* ─── Data ─────────────────────────────────────── */
 
 const skills = [
-  { label: "Flutter", color: "bg-[#1a1200] text-[#F59E0B]" },
-  { label: "Dart", color: "bg-[#0a0f1e] text-[#60A5FA]" },
-  { label: "Firebase", color: "bg-[#1a0d00] text-[#FB923C]" },
-  { label: "REST API", color: "bg-[#130a1e] text-[#C084FC]" },
-  { label: "Clean Architecture", color: "bg-[#1a0a10] text-[#F472B6]" },
-  { label: "CI/CD", color: "bg-[#041a0e] text-[#34D399]" },
-  { label: "GetX", color: "bg-[#1a1200] text-[#FCD34D]" },
-  { label: "Bloc", color: "bg-[#041018] text-[#38BDF8]" },
+  { label: "Problem Solving", color: "bg-[#1a1200] text-[#F59E0B]" },
+  { label: "Communication", color: "bg-[#0a0f1e] text-[#60A5FA]" },
+  { label: "Team Collaboration", color: "bg-[#1a0d00] text-[#FB923C]" },
+  { label: "Project Ownership", color: "bg-[#130a1e] text-[#C084FC]" },
+  { label: "Adaptability", color: "bg-[#1a0a10] text-[#F472B6]" },
+  { label: "Client Support", color: "bg-[#041a0e] text-[#34D399]" },
+  { label: "Digital Tools", color: "bg-[#1a1200] text-[#FCD34D]" },
+  { label: "Continuous Learning", color: "bg-[#041018] text-[#38BDF8]" },
 ];
 
 const services = [
   {
-    icon: Smartphone,
-    title: "Full App Development",
-    desc: "End-to-end Flutter apps — from idea to Play Store & App Store launch.",
+    icon: Briefcase,
+    title: "Professional Execution",
+    desc: "I take ownership of work, stay organized, and focus on delivering dependable results.",
   },
   {
     icon: Monitor,
-    title: "Pixel-Perfect UI",
-    desc: "Modern, responsive interfaces that match every design detail.",
+    title: "Digital & Technical Confidence",
+    desc: "Comfortable with software products, modern tools, structured workflows, and online collaboration.",
   },
   {
     icon: Globe,
-    title: "Backend Integration",
-    desc: "Firebase, REST APIs, Auth, push notifications, and real-time data.",
+    title: "Clear Communication",
+    desc: "I communicate clearly with clients, teams, and stakeholders to keep work moving forward.",
   },
   {
     icon: Shield,
-    title: "Maintenance & Support",
-    desc: "Bug fixes, performance tuning, and long-term technical support.",
+    title: "Reliable Support",
+    desc: "I stay responsive, solve issues calmly, and adapt to different roles, teams, and responsibilities.",
   },
 ];
 
 const experiences = [
   {
     company: "Company Name 1",
-    role: "Flutter Developer",
+    role: "Software & Operations Contributor",
     duration: "Jan 2023 – Present",
     details:
-      "Built and maintained production-grade Flutter apps with Firebase and REST API integration. Led a team of 3 developers on a fintech product.",
-    tags: ["Flutter", "Firebase", "REST API"],
+      "Handled product delivery, cross-team communication, and day-to-day problem solving while contributing to software projects and business needs.",
+    tags: ["Execution", "Coordination", "Problem Solving"],
   },
   {
     company: "Company Name 2",
-    role: "Junior Mobile App Developer",
+    role: "Team Support & Project Assistant",
     duration: "May 2021 – Dec 2022",
     details:
-      "Implemented responsive UI screens, fixed bugs, and improved app performance across Android and iOS.",
-    tags: ["Flutter", "UI/UX", "Android", "iOS"],
+      "Supported team goals through task follow-through, communication, documentation, and practical digital work across changing responsibilities.",
+    tags: ["Communication", "Support", "Adaptability"],
   },
 ];
 
@@ -90,10 +88,10 @@ const socials = [
 ];
 
 const highlights = [
-  { Icon: Code2, title: "Clean Code", sub: "Maintainable & scalable\nwith best practice" },
-  { Icon: Monitor, title: "Pixel Perfect UI", sub: "Modern, responsive &\nuser-friendly design" },
-  { Icon: Rocket, title: "Fast Delivery", sub: "On-time delivery with\nhigh quality" },
-  { Icon: Headphones, title: "Reliable Support", sub: "Long-term support &\nclear communication" },
+  { Icon: Code2, title: "Smart Worker", sub: "Practical thinking with\nstrong digital confidence" },
+  { Icon: Monitor, title: "Professional Presence", sub: "Clear communication and\nstructured work habits" },
+  { Icon: Rocket, title: "Quick Learner", sub: "Able to adapt fast to\nnew roles and tools" },
+  { Icon: Headphones, title: "Dependable", sub: "Consistent follow-through\nand reliable support" },
 ];
 
 /* ─── Animations ────────────────────────────────── */
@@ -127,7 +125,7 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="text-[1.05rem] font-bold leading-none text-white">Md. Srsuman</p>
-                <p className="text-xs text-white/40">Flutter App Developer</p>
+                <p className="text-xs text-white/40">Professional Portfolio</p>
               </div>
             </div>
 
@@ -155,17 +153,17 @@ export default function HomePage() {
               {/* badge */}
               <span className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/25 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold text-[#F59E0B] backdrop-blur">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#F59E0B]" />
-                Available for Freelance Work
+                Open to Tech, Non-Tech, Remote, and Office Roles
               </span>
 
               <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-[3.75rem]">
                 Professional
                 <br />
-                Mobile App Solutions
+                Digital Skills
                 <br />
                 for{" "}
                 <span className="relative inline-block text-[#F59E0B]">
-                  Real Business Growth.
+                  Real Career Opportunities.
                   <svg
                     className="absolute -bottom-1.5 left-0 w-full"
                     viewBox="0 0 400 8"
@@ -184,8 +182,9 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-6 max-w-xl border-l-[3px] border-[#F59E0B]/40 pl-4 text-[0.97rem] leading-relaxed text-white/55">
-                I build high-quality Flutter applications with clean code, strong UX, and reliable delivery.
-                From startup MVP to enterprise features, I help teams ship faster with confidence.
+                I am a dependable, adaptable, and fast-learning professional with experience in digital work,
+                software projects, communication, and day-to-day execution. I can contribute across tech,
+                non-tech, support, coordination, and remote roles with confidence.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -199,7 +198,7 @@ export default function HomePage() {
 
               <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
                 <Star size={15} className="text-[#F59E0B]" fill="#F59E0B" />
-                Available for New Projects
+                Open to New Roles and Collaborations
                 <svg width="36" height="20" viewBox="0 0 36 20" fill="none" className="ml-1 opacity-40">
                   <path d="M2 17 C8 4, 28 0, 34 9" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
                   <path d="M30 6 L34 9 L31 13" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -225,15 +224,15 @@ export default function HomePage() {
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 420 420">
                   <circle cx="210" cy="210" r="207" fill="none" stroke="#F59E0B" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="6 8" />
                 </svg>
-                <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#1a1000] to-[#2a1f00]" />
+                <div className="absolute inset-4 rounded-full overflow-hidden bg-gradient-to-br from-[#1a1000] to-[#2a1f00]" />
 
                 {/* photo */}
                 <Image
-                  src="/profile-me1.png"
+                  src="/profile-original-0000.png"
                   alt="Md. Srsuman"
                   width={900}
                   height={1300}
-                  className="relative z-10 h-full w-full object-contain object-bottom drop-shadow-2xl"
+                  className="relative z-10 h-full w-full scale-[1.06] object-cover object-top drop-shadow-2xl"
                   priority
                 />
 
@@ -246,11 +245,11 @@ export default function HomePage() {
                       <path d="M14 35l11-20 11 20" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
                     </svg>
                   </div>
-                  <span className="text-xs font-semibold text-white">Flutter</span>
+                  <span className="text-xs font-semibold text-white">Adaptable</span>
                 </div>
 
                 <div className="absolute -left-5 top-[40%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
-                  <Smartphone size={20} className="text-[#F59E0B]" />
+                  <Briefcase size={20} className="text-[#F59E0B]" />
                 </div>
 
                 <div className="absolute -right-6 bottom-[28%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
@@ -290,8 +289,8 @@ export default function HomePage() {
       {/* ═══ SERVICES ════════════════════════════════ */}
       <SectionWrapper id="services" className="container-width pt-20 md:pt-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">What I Do</span>
-          <h2 className="section-title">Services</h2>
+          <span className="section-label">What I Bring</span>
+          <h2 className="section-title">Professional Strengths</h2>
         </motion.div>
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, desc }, i) => (
@@ -365,8 +364,8 @@ export default function HomePage() {
       {/* ═══ SKILLS ══════════════════════════════════ */}
       <SectionWrapper className="container-width pt-20 md:pt-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">Expertise</span>
-          <h2 className="section-title">Core Skills</h2>
+          <span className="section-label">Strengths</span>
+          <h2 className="section-title">Core Capabilities</h2>
         </motion.div>
         <div className="mt-8 flex flex-wrap gap-3">
           {skills.map(({ label, color }, i) => (
@@ -389,14 +388,11 @@ export default function HomePage() {
       {/* ═══ LIFECYCLE ═══════════════════════════════ */}
       <LifecycleSection />
 
-      {/* ═══ FLUTTER LIFECYCLE ═══════════════════════ */}
-      <FlutterLifecycleSection />
-
       {/* ═══ PROJECTS ════════════════════════════════ */}
       <section id="projects" className="container-width pt-20 md:pt-28">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
           <span className="section-label">Portfolio</span>
-          <h2 className="section-title">Projects</h2>
+          <h2 className="section-title">Selected Work</h2>
         </motion.div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {projects.map((project, i) => {
@@ -508,14 +504,14 @@ export default function HomePage() {
         >
           <div className="mx-auto max-w-xl text-center">
             <span className="inline-block rounded-full bg-black/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-black/70">
-              Let&apos;s Work Together
+              Let&apos;s Connect
             </span>
             <h2 className="mt-4 text-3xl font-extrabold text-black md:text-4xl">
-              Have a project in mind?
+              Open to meaningful opportunities
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-black/60">
-              I&apos;m available for freelance projects, contract work, and long-term collaborations.
-              Feel free to reach out anytime.
+              I&apos;m available for tech roles, non-tech roles, support positions, remote work,
+              contract work, and long-term opportunities. Feel free to reach out anytime.
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -544,7 +540,7 @@ export default function HomePage() {
 
       {/* ═══ FOOTER ══════════════════════════════════ */}
       <footer className="container-width mt-16 border-t border-white/[0.06] py-6 text-center text-xs text-white/25">
-        © {new Date().getFullYear()} Md. Srsuman · Built with Next.js & Flutter passion
+        © {new Date().getFullYear()} Md. Srsuman · Built for broad career opportunities
       </footer>
     </main>
   );

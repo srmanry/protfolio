@@ -8,8 +8,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Flutter App Developer",
-  description: "Flutter App Developer portfolio with selected projects and contact details."
+  title: "Md. Srsuman | Professional Portfolio",
+  description: "Professional portfolio showcasing adaptable skills, selected work, and career-ready strengths across tech and non-tech roles."
 };
 
 export default function RootLayout({
