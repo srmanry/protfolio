@@ -1,546 +1,706 @@
 "use client";
 
-import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/section-wrapper";
-import { LifecycleSection } from "@/components/lifecycle-section";
 import { projects } from "@/data/projects";
 import {
-  Code2,
-  Monitor,
-  Rocket,
-  Headphones,
-  CheckCircle2,
+  ArrowRight,
   Briefcase,
-  Star,
-  Send,
+  CheckCircle2,
+  ChevronUp,
+  Code2,
   Download,
-  Mail,
-  ArrowUpRight,
-  Zap,
-  Shield,
-  Globe,
   ExternalLink,
-  User,
-  Link2,
+  Globe,
+  Mail,
+  MapPin,
+  Menu,
+  MessageSquareQuote,
+  MonitorSmartphone,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+  X,
 } from "lucide-react";
 
-/* ─── Data ─────────────────────────────────────── */
-
-const skills = [
-  { label: "Problem Solving", color: "bg-[#1a1200] text-[#F59E0B]" },
-  { label: "Communication", color: "bg-[#0a0f1e] text-[#60A5FA]" },
-  { label: "Team Collaboration", color: "bg-[#1a0d00] text-[#FB923C]" },
-  { label: "Project Ownership", color: "bg-[#130a1e] text-[#C084FC]" },
-  { label: "Adaptability", color: "bg-[#1a0a10] text-[#F472B6]" },
-  { label: "Client Support", color: "bg-[#041a0e] text-[#34D399]" },
-  { label: "Digital Tools", color: "bg-[#1a1200] text-[#FCD34D]" },
-  { label: "Continuous Learning", color: "bg-[#041018] text-[#38BDF8]" },
+const navItems = [
+  { label: "Services", href: "#services" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const services = [
   {
-    icon: Briefcase,
-    title: "Professional Execution",
-    desc: "I take ownership of work, stay organized, and focus on delivering dependable results.",
+    Icon: Workflow,
+    title: "Strategy & Planning",
+    description:
+      "Clear thinking, thoughtful planning, and structured execution for digital work, team tasks, and business priorities.",
+    span: "lg:col-span-4",
   },
   {
-    icon: Monitor,
-    title: "Digital & Technical Confidence",
-    desc: "Comfortable with software products, modern tools, structured workflows, and online collaboration.",
+    Icon: MonitorSmartphone,
+    title: "Digital Product Execution",
+    description:
+      "Experience shipping polished applications, translating ideas into usable systems, and keeping details aligned from concept to delivery.",
+    span: "lg:col-span-5",
   },
   {
-    icon: Globe,
-    title: "Clear Communication",
-    desc: "I communicate clearly with clients, teams, and stakeholders to keep work moving forward.",
-  },
-  {
-    icon: Shield,
+    Icon: ShieldCheck,
     title: "Reliable Support",
-    desc: "I stay responsive, solve issues calmly, and adapt to different roles, teams, and responsibilities.",
+    description:
+      "Dependable follow-through, calm problem solving, and steady communication across remote, office, and collaborative environments.",
+    span: "lg:col-span-3",
   },
+  {
+    Icon: Globe,
+    title: "Cross-Functional Communication",
+    description:
+      "Comfortable working with clients, stakeholders, teammates, and changing requirements while keeping the work clear and professional.",
+    span: "lg:col-span-6",
+  },
+  {
+    Icon: Briefcase,
+    title: "Professional Adaptability",
+    description:
+      "Able to contribute across tech, support, coordination, and broader digital roles without losing focus on quality or responsibility.",
+    span: "lg:col-span-6",
+  },
+];
+
+const stats = [
+  { value: "04", label: "Completed Projects" },
+  { value: "04+", label: "Years of Active Learning" },
+  { value: "2024", label: "Published App Releases" },
+  { value: "Remote + Office", label: "Preferred Work Modes" },
 ];
 
 const experiences = [
   {
-    company: "Company Name 1",
+    company: "Current Role",
     role: "Software & Operations Contributor",
-    duration: "Jan 2023 – Present",
-    details:
-      "Handled product delivery, cross-team communication, and day-to-day problem solving while contributing to software projects and business needs.",
-    tags: ["Execution", "Coordination", "Problem Solving"],
+    duration: "2023 — Present",
+    description:
+      "Contributing to software delivery, communication, and day-to-day execution with a focus on dependable output, coordination, and product quality.",
+    bullets: ["Product support", "Workflow ownership", "Cross-team communication"],
   },
   {
-    company: "Company Name 2",
-    role: "Team Support & Project Assistant",
-    duration: "May 2021 – Dec 2022",
-    details:
-      "Supported team goals through task follow-through, communication, documentation, and practical digital work across changing responsibilities.",
-    tags: ["Communication", "Support", "Adaptability"],
+    company: "Previous Role",
+    role: "Project Support Assistant",
+    duration: "2021 — 2022",
+    description:
+      "Supported evolving business and technical work through documentation, task follow-through, and practical digital execution in collaborative settings.",
+    bullets: ["Digital operations", "Documentation", "Adaptable execution"],
+  },
+];
+
+const skills = [
+  { label: "Communication", value: 94, detail: "Clear updates, calm collaboration, and professional alignment." },
+  { label: "Problem Solving", value: 91, detail: "Practical decision-making with a structured and thoughtful mindset." },
+  { label: "Project Ownership", value: 89, detail: "Following tasks through with responsibility and consistency." },
+  { label: "Digital Tools", value: 87, detail: "Comfortable with product workflows, software tools, and online systems." },
+];
+
+const testimonials = [
+  {
+    title: "Work Style",
+    body:
+      "I aim to bring clarity, sincerity, and dependable execution to every piece of work, whether the role is technical or not.",
+  },
+  {
+    title: "Collaboration",
+    body:
+      "Strong communication, thoughtful planning, and respect for deadlines are the standards I hold myself to in every team environment.",
+  },
+  {
+    title: "References",
+    body:
+      "Professional references, deeper work history, and additional details can be shared during the hiring or collaboration process.",
   },
 ];
 
 const socials = [
-  { label: "Facebook", href: "https://facebook.com", Icon: Link2 },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: Link2 },
-  { label: "GitHub", href: "https://github.com", Icon: Code2 },
-  { label: "Gmail", href: "mailto:yourname@gmail.com", Icon: Mail },
+  { label: "GitHub", href: "https://github.com", icon: Code2 },
+  { label: "Email", href: "mailto:yourname@gmail.com", icon: Mail },
+  { label: "Location", href: "#contact", icon: MapPin },
 ];
 
-const highlights = [
-  { Icon: Code2, title: "Smart Worker", sub: "Practical thinking with\nstrong digital confidence" },
-  { Icon: Monitor, title: "Professional Presence", sub: "Clear communication and\nstructured work habits" },
-  { Icon: Rocket, title: "Quick Learner", sub: "Able to adapt fast to\nnew roles and tools" },
-  { Icon: Headphones, title: "Dependable", sub: "Consistent follow-through\nand reliable support" },
-];
-
-/* ─── Animations ────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
-  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.5, delay: i * 0.08, ease: "easeOut" } }),
+  show: (delay = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay, ease: "easeOut" },
+  }),
 };
 
-/* ─── Component ─────────────────────────────────── */
-export default function HomePage() {
+function SectionHeading({
+  kicker,
+  title,
+  copy,
+}: {
+  kicker: string;
+  title: string;
+  copy?: string;
+}) {
   return (
-    <main className="overflow-x-hidden pb-24">
-      {/* ═══ HERO ════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#0a0a0a]">
-        {/* background blobs */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 -top-24 h-[500px] w-[500px] rounded-full bg-[#F59E0B]/10 blur-3xl" />
-          <div className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-[#FBBF24]/8 blur-3xl" />
-          <div className="absolute bottom-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-[#F59E0B]/6 blur-3xl" />
-          <div className="dot-grid absolute left-8 bottom-32 h-28 w-36 opacity-20" />
-          <div className="dot-grid absolute right-8 top-40 h-28 w-36 opacity-15" />
+    <div className="max-w-3xl">
+      <span className="section-label">{kicker}</span>
+      <h2 className="section-title">{title}</h2>
+      {copy ? <p className="section-copy mt-4">{copy}</p> : null}
+    </div>
+  );
+}
+
+function AppMockup({ title, accent, align }: { title: string; accent: string; align?: "left" | "right" }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24, rotate: align === "right" ? 8 : -8 }}
+      animate={{ opacity: 1, y: 0, rotate: align === "right" ? 6 : -6 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`phone-shell ${align === "right" ? "ml-auto" : ""}`}
+    >
+      <div className="phone-screen">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[0.62rem] uppercase tracking-[0.26em] text-white/35">Interface</p>
+            <h3 className="mt-1 text-sm font-semibold text-white">{title}</h3>
+          </div>
+          <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.04]" />
+        </div>
+        <div className={`mt-5 h-24 rounded-[1.25rem] ${accent}`} />
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <div className="mockup-block h-20" />
+          <div className="mockup-block h-20" />
+        </div>
+        <div className="mt-4 space-y-3">
+          <div className="mockup-line w-[72%]" />
+          <div className="mockup-line w-full" />
+          <div className="mockup-line w-[58%]" />
+        </div>
+        <div className="mt-5 flex items-center gap-2">
+          <div className="mockup-chip">UX</div>
+          <div className="mockup-chip">Flow</div>
+          <div className="mockup-chip">Quality</div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function ProjectShowcase({
+  project,
+  index,
+}: {
+  project: (typeof projects)[number];
+  index: number;
+}) {
+  const isEven = index % 2 === 0;
+  const primaryLink = project.appStore ?? project.playStore ?? project.github ?? `/projects/${project.slug}`;
+
+  return (
+    <motion.article
+      custom={index * 0.08}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.18 }}
+      variants={fadeUp}
+      className="project-shell"
+    >
+      <div className={`grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] ${!isEven ? "lg:grid-flow-dense" : ""}`}>
+        <div className={!isEven ? "lg:col-start-2" : ""}>
+          <div className="project-visual">
+            <div className="project-visual__top">
+              <span className="text-3xl">{project.icon}</span>
+              <span className="rounded-full border border-white/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/42">
+                {project.published ? `Published ${project.publishedDate}` : "Case Study"}
+              </span>
+            </div>
+            <div className="project-device-grid">
+              <div className="project-device project-device--lg">
+                <div className="project-device__inner">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="space-y-2">
+                      <div className="mockup-line w-24" />
+                      <div className="mockup-line w-16" />
+                    </div>
+                    <div className="h-10 w-10 rounded-2xl border border-white/10 bg-white/[0.06]" />
+                  </div>
+                  <div className="h-32 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(255,176,0,0.22),rgba(255,201,74,0.04))]" />
+                  <div className="mt-4 grid grid-cols-3 gap-3">
+                    <div className="mockup-block h-12" />
+                    <div className="mockup-block h-12" />
+                    <div className="mockup-block h-12" />
+                  </div>
+                </div>
+              </div>
+              <div className="project-device project-device--sm">
+                <div className="project-device__inner">
+                  <div className="h-20 rounded-[1.1rem] bg-white/[0.05]" />
+                  <div className="mt-3 space-y-2">
+                    <div className="mockup-line w-16" />
+                    <div className="mockup-line w-12" />
+                    <div className="mockup-line w-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* ── Navbar ── */}
-        <header className="container-width relative z-20 pt-7">
-          <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-white/[0.07] pb-5">
-            {/* brand */}
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#F59E0B] to-[#FBBF24] text-sm font-bold text-black shadow-md">
-                MS
-              </div>
-              <div>
-                <p className="text-[1.05rem] font-bold leading-none text-white">Md. Srsuman</p>
-                <p className="text-xs text-white/40">Professional Portfolio</p>
-              </div>
-            </div>
+        <div className={!isEven ? "lg:col-start-1 lg:row-start-1" : ""}>
+          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#FFC94A]/80">
+            Case Study {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="mt-4 text-3xl font-semibold text-white">{project.title}</h3>
+          <p className="mt-4 text-base leading-8 text-white/62">{project.summary}</p>
+          <p className="mt-4 text-sm leading-7 text-white/48">{project.details}</p>
 
-            {/* links */}
-            <div className="hidden items-center gap-7 text-sm font-medium text-white/50 md:flex">
-              {["Services", "Experience", "Projects", "Contact"].map((l) => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="transition hover:text-[#F59E0B]">
-                  {l}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <a href="#contact" className="btn-primary text-xs">
-              <Send size={13} /> Hire Me
-            </a>
-          </nav>
-        </header>
-
-        {/* ── Hero body ── */}
-        <div className="container-width relative z-10 pb-10 pt-12 md:pt-16">
-          <div className="grid items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
-            {/* left */}
-            <motion.div initial="hidden" animate="show" variants={fadeUp}>
-              {/* badge */}
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#F59E0B]/25 bg-[#F59E0B]/10 px-4 py-1.5 text-xs font-semibold text-[#F59E0B] backdrop-blur">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-[#F59E0B]" />
-                Open to Tech, Non-Tech, Remote, and Office Roles
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.stack.map((item) => (
+              <span key={item} className="skill-tag">
+                {item}
               </span>
-
-              <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-[3.75rem]">
-                Professional
-                <br />
-                Digital Skills
-                <br />
-                for{" "}
-                <span className="relative inline-block text-[#F59E0B]">
-                  Real Career Opportunities.
-                  <svg
-                    className="absolute -bottom-1.5 left-0 w-full"
-                    viewBox="0 0 400 8"
-                    preserveAspectRatio="none"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2 5.5 C100 1.5, 200 7.5, 398 3"
-                      stroke="#F59E0B"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
-              </h1>
-
-              <p className="mt-6 max-w-xl border-l-[3px] border-[#F59E0B]/40 pl-4 text-[0.97rem] leading-relaxed text-white/55">
-                I am a dependable, adaptable, and fast-learning professional with experience in digital work,
-                software projects, communication, and day-to-day execution. I can contribute across tech,
-                non-tech, support, coordination, and remote roles with confidence.
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a href="#contact" className="btn-primary">
-                  <User size={15} /> Hire Me
-                </a>
-                <a href="#" className="btn-outline">
-                  <Download size={15} /> Download CV
-                </a>
-              </div>
-
-              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
-                <Star size={15} className="text-[#F59E0B]" fill="#F59E0B" />
-                Open to New Roles and Collaborations
-                <svg width="36" height="20" viewBox="0 0 36 20" fill="none" className="ml-1 opacity-40">
-                  <path d="M2 17 C8 4, 28 0, 34 9" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" />
-                  <path d="M30 6 L34 9 L31 13" stroke="#F59E0B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-            </motion.div>
-
-            {/* right – profile photo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.93 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative mx-auto flex items-center justify-center"
-            >
-              {/* outer glow ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#F59E0B]/20 to-[#FBBF24]/10 blur-2xl" />
-
-              {/* dark circle bg */}
-              <div className="relative h-[300px] w-[300px] md:h-[420px] md:w-[420px]">
-                {/* gold ring */}
-                <div className="absolute inset-0 rounded-full border-[3px] border-[#F59E0B]/70 shadow-[0_0_32px_rgba(245,158,11,0.25),inset_0_0_32px_rgba(245,158,11,0.05)]" />
-                {/* dashed outer ring */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 420 420">
-                  <circle cx="210" cy="210" r="207" fill="none" stroke="#F59E0B" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="6 8" />
-                </svg>
-                <div className="absolute inset-4 rounded-full overflow-hidden bg-gradient-to-br from-[#1a1000] to-[#2a1f00]" />
-
-                {/* photo */}
-                <Image
-                  src="/profile-original-0000.png"
-                  alt="Md. Srsuman"
-                  width={900}
-                  height={1300}
-                  className="relative z-10 h-full w-full scale-[1.06] object-cover object-top drop-shadow-2xl"
-                  priority
-                />
-
-                {/* floating badges */}
-                <div className="absolute -right-4 top-[18%] z-20 flex items-center gap-2 rounded-2xl bg-[#111111] border border-white/[0.07] px-3.5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F59E0B]/15">
-                    <svg width="18" height="18" viewBox="0 0 50 50" fill="none">
-                      <path d="M25 5L5 45h40L25 5z" fill="#F59E0B" opacity="0.15" />
-                      <path d="M25 5L5 45h40L25 5z" stroke="#F59E0B" strokeWidth="3" strokeLinejoin="round" />
-                      <path d="M14 35l11-20 11 20" stroke="#F59E0B" strokeWidth="2.5" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-semibold text-white">Adaptable</span>
-                </div>
-
-                <div className="absolute -left-5 top-[40%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
-                  <Briefcase size={20} className="text-[#F59E0B]" />
-                </div>
-
-                <div className="absolute -right-6 bottom-[28%] z-20 flex items-center justify-center rounded-2xl bg-[#111111] border border-white/[0.07] p-3 shadow-[0_8px_28px_rgba(0,0,0,0.5)]">
-                  <Code2 size={20} className="text-[#F59E0B]" />
-                </div>
-              </div>
-            </motion.div>
+            ))}
           </div>
 
-          {/* ── Highlights bar ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
-            className="mt-12 rounded-2xl border border-white/[0.07] bg-[#111111] p-5 shadow-[0_8px_32px_rgba(245,158,11,0.06)] md:p-6"
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={primaryLink} target="_blank" rel="noreferrer" className="btn-primary">
+              <ExternalLink size={16} /> Live Demo
+            </a>
+            {project.github ? (
+              <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary">
+                <Code2 size={16} /> GitHub
+              </a>
+            ) : null}
+            <Link href={`/projects/${project.slug}`} className="btn-secondary">
+              <ArrowRight size={16} /> Case Study
+            </Link>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+export default function HomePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <main className="relative overflow-x-hidden pb-20">
+      <div className="site-background" aria-hidden="true">
+        <div className="site-background__noise" />
+        <div className="site-background__grid" />
+        <div className="site-background__orb site-background__orb--left" />
+        <div className="site-background__orb site-background__orb--right" />
+      </div>
+
+      <header className={`site-nav ${scrolled ? "site-nav--solid" : ""}`}>
+        <div className="container-width flex items-center justify-between gap-6 py-4">
+          <Link href="/" className="flex items-center gap-3" aria-label="Md. Srsuman Home">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FFB000] text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,176,0,0.22)]">
+              MS
+            </div>
+            <div>
+              <p className="text-lg font-semibold tracking-tight text-white">Md. Srsuman</p>
+              <p className="text-sm text-white/42">Professional Portfolio</p>
+            </div>
+          </Link>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <a key={item.label} href={item.href} className="nav-link">
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden md:block">
+            <a href="#contact" className="btn-primary">
+              <Send size={16} /> Hire Me
+            </a>
+          </div>
+
+          <button
+            type="button"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            className="nav-toggle md:hidden"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
           >
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {highlights.map(({ Icon, title, sub }, i) => (
-                <div
-                  key={title}
-                  className={`flex items-start gap-4 ${i < highlights.length - 1 ? "lg:border-r lg:border-white/[0.06] lg:pr-6" : ""}`}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+
+        {mobileMenuOpen ? (
+          <div className="container-width pb-4 md:hidden">
+            <div className="rounded-[1.5rem] border border-white/10 bg-black/50 p-4 backdrop-blur-xl">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-white/75 transition hover:border-white/10 hover:bg-white/[0.03] hover:text-white"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+                <a href="#contact" className="btn-primary mt-2 justify-center" onClick={() => setMobileMenuOpen(false)}>
+                  <Send size={16} /> Hire Me
+                </a>
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </header>
+
+      <section className="container-width relative z-10 pt-32 md:pt-40">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div initial="hidden" animate="show" variants={fadeUp}>
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/65 backdrop-blur-xl">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#FFB000] shadow-[0_0_18px_rgba(255,176,0,0.7)]" />
+              Available for Opportunities
+            </div>
+
+            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl xl:text-[5.2rem]">
+              Build Digital Experiences
+              <br />
+              That Create Real Impact.
+            </h1>
+
+            <p className="hero-copy mt-7 max-w-2xl">
+              Every piece of work begins with a clear purpose, thoughtful planning, and a dedicated mindset. I believe
+              meaningful work makes people&apos;s lives easier and opens the door to new possibilities. Guided by this
+              belief, I approach everything I do with sincerity, responsibility, and an unwavering commitment to
+              quality.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a href="#contact" className="btn-primary">
+                <Send size={16} /> Hire Me
+              </a>
+              <a href="#" className="btn-secondary">
+                <Download size={16} /> Download Resume
+              </a>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              {socials.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="social-pill"
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noreferrer" : undefined}
                 >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#F59E0B]/15">
-                    <Icon size={18} className="text-[#F59E0B]" />
-                  </div>
-                  <div>
-                    <p className="text-[0.9rem] font-semibold text-white">{title}</p>
-                    <p className="mt-0.5 whitespace-pre-line text-xs leading-snug text-white/40">{sub}</p>
-                  </div>
-                </div>
+                  <Icon size={15} />
+                  {label}
+                </a>
               ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut", delay: 0.1 }}
+            className="relative"
+          >
+            <div className="hero-visual-shell">
+              <div className="hero-visual__halo" />
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute left-2 top-12 z-20 hidden xl:block"
+              >
+                <AppMockup title="Experience" accent="bg-[linear-gradient(180deg,rgba(255,176,0,0.28),rgba(255,176,0,0.03))]" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 14, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                className="relative z-30 mx-auto max-w-[21rem]"
+              >
+                <AppMockup title="Product Vision" accent="bg-[linear-gradient(180deg,rgba(255,201,74,0.35),rgba(255,201,74,0.05))]" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                className="absolute bottom-6 right-0 z-10 hidden xl:block"
+              >
+                <AppMockup title="Execution" accent="bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))]" align="right" />
+              </motion.div>
+
+              <div className="hero-floating-card hero-floating-card--top">
+                <Sparkles size={16} className="text-[#FFB000]" />
+                Premium visual systems
+              </div>
+              <div className="hero-floating-card hero-floating-card--bottom">
+                <CheckCircle2 size={16} className="text-[#FFB000]" />
+                Thoughtful delivery
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ═══ SERVICES ════════════════════════════════ */}
-      <SectionWrapper id="services" className="container-width pt-20 md:pt-28">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">What I Bring</span>
-          <h2 className="section-title">Professional Strengths</h2>
-        </motion.div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }, i) => (
-            <motion.div
+      <SectionWrapper id="about" className="container-width relative z-10 pt-24 md:pt-32">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHeading
+            kicker="About"
+            title="A modern portfolio built around quality, trust, and thoughtful execution."
+            copy="This website is designed to present a broader professional identity — one that reflects digital capability, responsibility, adaptability, and a strong commitment to meaningful work."
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {stats.map((item, index) => (
+              <motion.div
+                key={item.label}
+                custom={index * 0.08}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                className="surface-card p-6"
+              >
+                <p className="text-3xl font-semibold tracking-[-0.04em] text-white">{item.value}</p>
+                <p className="mt-3 text-sm leading-6 text-white/55">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper id="services" className="container-width relative z-10 pt-24 md:pt-32">
+        <SectionHeading
+          kicker="Services"
+          title="A premium, flexible skill set suited for digital work across different environments."
+          copy="The goal is not to be limited to a single label. The work reflects strategy, execution, communication, and modern digital professionalism."
+        />
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-12">
+          {services.map(({ Icon, title, description, span }, index) => (
+            <motion.article
               key={title}
-              custom={i}
+              custom={index * 0.06}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.18 }}
               variants={fadeUp}
-              className="card group flex flex-col gap-4 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:border-[#F59E0B]/20"
+              className={`surface-card group p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FFB000]/30 ${span}`}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F59E0B]/15 transition group-hover:bg-[#F59E0B]">
-                <Icon size={20} className="text-[#F59E0B] transition group-hover:text-black" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] text-[#FFB000] transition duration-300 group-hover:border-[#FFB000]/30 group-hover:bg-[#FFB000]/10">
+                <Icon size={22} />
               </div>
-              <div>
-                <h3 className="text-[0.95rem] font-semibold text-white">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/50">{desc}</p>
-              </div>
-            </motion.div>
+              <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
+              <p className="mt-4 text-sm leading-7 text-white/56">{description}</p>
+            </motion.article>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* ═══ EXPERIENCE ══════════════════════════════ */}
-      <SectionWrapper className="container-width pt-20 md:pt-28">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">Career</span>
-          <h2 id="experience" className="section-title">Experience</h2>
-        </motion.div>
-        <div className="relative mt-8 space-y-5">
-          {/* vertical line */}
-          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-[#F59E0B]/40 to-transparent" />
+      <SectionWrapper id="experience" className="container-width relative z-10 pt-24 md:pt-32">
+        <SectionHeading
+          kicker="Experience"
+          title="A clear, thoughtful timeline of professional growth."
+          copy="The emphasis is on steady execution, learning, and the ability to support meaningful outcomes in both technical and broader work contexts."
+        />
 
-          {experiences.map((item, i) => (
+        <div className="relative mt-12 space-y-6 before:absolute before:left-[18px] before:top-3 before:h-[calc(100%-1.5rem)] before:w-px before:bg-[linear-gradient(180deg,rgba(255,176,0,0.35),transparent)]">
+          {experiences.map((item, index) => (
             <motion.article
-              key={`${item.company}-${item.duration}`}
-              custom={i}
+              key={item.role}
+              custom={index * 0.08}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.18 }}
               variants={fadeUp}
-              className="relative pl-12"
+              className="relative pl-14"
             >
-              {/* dot */}
-              <div className="absolute left-[11px] top-5 h-4 w-4 rounded-full border-2 border-[#F59E0B] bg-[#0a0a0a]" />
-              <div className="card p-6">
-                <div className="flex flex-wrap items-start justify-between gap-2">
+              <div className="absolute left-[9px] top-7 h-5 w-5 rounded-full border border-[#FFB000]/50 bg-[#0b0b0b] shadow-[0_0_0_6px_rgba(255,176,0,0.08)]" />
+              <div className="surface-card p-6 md:p-7">
+                <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-base font-bold text-white">{item.company}</h3>
-                    <p className="mt-0.5 text-sm font-semibold text-[#F59E0B]">{item.role}</p>
+                    <p className="text-sm uppercase tracking-[0.24em] text-[#FFC94A]/75">{item.duration}</p>
+                    <h3 className="mt-2 text-2xl font-semibold text-white">{item.role}</h3>
+                    <p className="mt-1 text-sm text-white/42">{item.company}</p>
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-lg bg-[#F59E0B]/15 px-3 py-1 text-xs font-medium text-[#F59E0B]">
-                    <Briefcase size={11} /> {item.duration}
-                  </span>
+                  <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/60">
+                    Vertical Timeline
+                  </div>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-white/55">{item.details}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {item.tags.map((t) => (
-                    <span key={t} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs font-medium text-[#F59E0B]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ═══ SKILLS ══════════════════════════════════ */}
-      <SectionWrapper className="container-width pt-20 md:pt-28">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">Strengths</span>
-          <h2 className="section-title">Core Capabilities</h2>
-        </motion.div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {skills.map(({ label, color }, i) => (
-            <motion.span
-              key={label}
-              custom={i}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className={`${color} flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold shadow-sm transition hover:scale-105 border border-white/[0.05]`}
-            >
-              <CheckCircle2 size={14} />
-              {label}
-            </motion.span>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ═══ LIFECYCLE ═══════════════════════════════ */}
-      <LifecycleSection />
-
-      {/* ═══ PROJECTS ════════════════════════════════ */}
-      <section id="projects" className="container-width pt-20 md:pt-28">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-          <span className="section-label">Portfolio</span>
-          <h2 className="section-title">Selected Work</h2>
-        </motion.div>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {projects.map((project, i) => {
-            const primaryLink = project.appStore ?? project.playStore ?? project.github ?? "#";
-            return (
-            <motion.article
-              key={project.slug}
-              custom={i}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="card group flex flex-col overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:border-[#F59E0B]/20"
-            >
-              {/* store badges banner */}
-              <div className="flex items-center justify-between bg-[#161616] px-5 py-3 border-b border-white/[0.05]">
-                <span className="text-2xl">{project.icon}</span>
-                <div className="flex items-center gap-2">
-                  {project.playStore && (
-                    <a href={project.playStore} target="_blank" rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.07] px-2.5 py-1 text-[10px] font-semibold text-white/60 hover:bg-[#F59E0B]/20 hover:text-[#F59E0B] transition"
-                    >
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.5c.3.17.64.2.96.1l11.8-11.8-2.93-2.93L3.18 23.5zm15.4-13.5L5.23 2.57A1 1 0 003.5 3.5v17a1 1 0 001.73.67l13.35-7.76a1 1 0 000-1.41zM3.98.4L13.5 9.93 16.43 7 4.95.1A1 1 0 003.98.4zM20.5 10.76l-2.6-1.5-3.2 3.2 3.2 3.2 2.6-1.5a1.5 1.5 0 000-3.4z"/></svg>
-                      Play Store
-                    </a>
-                  )}
-                  {project.appStore && (
-                    <a href={project.appStore} target="_blank" rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg bg-white/[0.07] px-2.5 py-1 text-[10px] font-semibold text-white/60 hover:bg-[#F59E0B]/20 hover:text-[#F59E0B] transition"
-                    >
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                      App Store
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-1 flex-col p-6">
-                <div>
-                  <a href={primaryLink} target="_blank" rel="noreferrer" className="group/link flex items-center gap-1">
-                    <h3 className="text-[0.95rem] font-bold text-white group-hover/link:text-[#F59E0B] transition">
-                      {project.title}
-                    </h3>
-                    <ArrowUpRight size={14} className="opacity-0 transition group-hover/link:opacity-100 text-[#F59E0B]" />
-                  </a>
-                  {project.published && project.publishedDate && (
-                    <p className="mt-0.5 text-xs font-medium text-[#F59E0B]/50">
-                      Published: {project.publishedDate}
-                    </p>
-                  )}
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-white/55">{project.summary}</p>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.stack.map((s) => (
-                    <span key={s} className="rounded-md bg-white/[0.06] px-2.5 py-1 text-xs font-medium text-[#F59E0B]">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-white/56">{item.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
-                    >
-                      <Code2 size={12} /> GitHub
-                    </a>
-                  )}
-                  {project.playStore && (
-                    <a
-                      href={project.playStore}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
-                    >
-                      <ExternalLink size={12} /> Play Store
-                    </a>
-                  )}
-                  {project.appStore && (
-                    <a
-                      href={project.appStore}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70 transition hover:border-[#F59E0B]/40 hover:text-[#F59E0B]"
-                    >
-                      <ExternalLink size={12} /> App Store
-                    </a>
-                  )}
+                  {item.bullets.map((bullet) => (
+                    <span key={bullet} className="skill-tag">
+                      {bullet}
+                    </span>
+                  ))}
                 </div>
               </div>
             </motion.article>
-            );
-          })}
+          ))}
         </div>
-      </section>
+      </SectionWrapper>
 
-      {/* ═══ CONTACT ═════════════════════════════════ */}
-      <SectionWrapper id="contact" className="container-width pt-20 md:pt-28">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="rounded-3xl bg-gradient-to-br from-[#F59E0B] to-[#FBBF24] p-10 md:p-14"
-        >
-          <div className="mx-auto max-w-xl text-center">
-            <span className="inline-block rounded-full bg-black/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-black/70">
-              Let&apos;s Connect
-            </span>
-            <h2 className="mt-4 text-3xl font-extrabold text-black md:text-4xl">
-              Open to meaningful opportunities
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-black/60">
-              I&apos;m available for tech roles, non-tech roles, support positions, remote work,
-              contract work, and long-term opportunities. Feel free to reach out anytime.
+      <SectionWrapper id="projects" className="container-width relative z-10 pt-24 md:pt-32">
+        <SectionHeading
+          kicker="Projects"
+          title="Selected work presented as premium product case studies."
+          copy="The layout stays far away from ordinary portfolio cards. Each project is framed like a refined product story with strong visual hierarchy and cleaner interaction."
+        />
+
+        <div className="mt-12 space-y-8">
+          {projects.map((project, index) => (
+            <ProjectShowcase key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper id="skills" className="container-width relative z-10 pt-24 md:pt-32">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <SectionHeading
+            kicker="Skills"
+            title="A modern capability layer focused on communication, ownership, and digital execution."
+            copy="The skills section is intentionally minimal and refined. It highlights the strengths that carry across technical, support, and professional environments."
+          />
+
+          <div className="grid gap-4">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={skill.label}
+                custom={index * 0.08}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={fadeUp}
+                className="surface-card p-5"
+              >
+                <div className="flex items-end justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{skill.label}</h3>
+                    <p className="mt-1 text-sm text-white/46">{skill.detail}</p>
+                  </div>
+                  <span className="text-sm font-semibold text-[#FFC94A]">{skill.value}%</span>
+                </div>
+                <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.value}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.1, ease: "easeOut", delay: index * 0.08 }}
+                    className="h-full rounded-full bg-[linear-gradient(90deg,#FFB000,#FFC94A)]"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper className="container-width relative z-10 pt-24 md:pt-32">
+        <SectionHeading
+          kicker="Testimonials"
+          title="A refined section for professional impression, collaboration, and credibility."
+          copy="Rather than inventing generic praise, this section communicates the standards, working style, and professionalism behind the work."
+        />
+
+        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          {testimonials.map((item, index) => (
+            <motion.article
+              key={item.title}
+              custom={index * 0.08}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.18 }}
+              variants={fadeUp}
+              className="surface-card p-6"
+            >
+              <MessageSquareQuote size={22} className="text-[#FFB000]" />
+              <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-white/55">{item.body}</p>
+            </motion.article>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper id="contact" className="container-width relative z-10 pt-24 md:pt-32">
+        <div className="contact-shell">
+          <div>
+            <span className="section-label">Contact</span>
+            <h2 className="section-title max-w-xl">Let&apos;s Build Something Great Together</h2>
+            <p className="section-copy mt-4 max-w-xl">
+              Open to opportunities across technical work, digital collaboration, support roles, and modern
+              professional environments. If the work values clarity, sincerity, and quality, I would love to connect.
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {socials.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className="flex items-center gap-2 rounded-xl bg-black/15 px-5 py-2.5 text-sm font-semibold text-black/80 backdrop-blur transition hover:bg-black hover:text-[#F59E0B]"
-                >
-                  <Icon size={15} /> {label}
-                </a>
-              ))}
+            <div className="mt-8 space-y-4 text-sm text-white/62">
+              <a href="mailto:yourname@gmail.com" className="contact-meta">
+                <Mail size={16} className="text-[#FFB000]" />
+                yourname@gmail.com
+              </a>
+              <div className="contact-meta">
+                <MapPin size={16} className="text-[#FFB000]" />
+                Available for remote and office opportunities
+              </div>
             </div>
-
-            <a
-              href="mailto:yourname@gmail.com"
-              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-black px-8 py-3.5 text-sm font-bold text-[#F59E0B] shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)]"
-            >
-              <Zap size={15} fill="#F59E0B" /> Get in Touch
-            </a>
           </div>
-        </motion.div>
+
+          <form className="surface-card p-6 md:p-7" aria-label="Contact form">
+            <div className="grid gap-4 md:grid-cols-2">
+              <label className="input-shell">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" />
+              </label>
+              <label className="input-shell">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" />
+              </label>
+            </div>
+            <label className="input-shell mt-4">
+              <span>Subject</span>
+              <input type="text" name="subject" placeholder="How can we work together?" />
+            </label>
+            <label className="input-shell mt-4">
+              <span>Message</span>
+              <textarea name="message" rows={5} placeholder="Write a short message..." />
+            </label>
+            <button type="submit" className="btn-primary mt-6 w-full justify-center">
+              <Send size={16} /> Send Message
+            </button>
+          </form>
+        </div>
       </SectionWrapper>
 
-      {/* ═══ FOOTER ══════════════════════════════════ */}
-      <footer className="container-width mt-16 border-t border-white/[0.06] py-6 text-center text-xs text-white/25">
-        © {new Date().getFullYear()} Md. Srsuman · Built for broad career opportunities
+      <footer className="container-width relative z-10 mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-center text-sm text-white/38 md:flex-row">
+        <p>© {new Date().getFullYear()} Md. Srsuman. Crafted with care for a premium digital presence.</p>
+        <div className="flex items-center gap-4">
+          {socials.map(({ label, href, icon: Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noreferrer" : undefined}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-white/55 transition hover:border-[#FFB000]/30 hover:text-white"
+            >
+              <Icon size={14} />
+              {label}
+            </a>
+          ))}
+          <a href="#top" className="inline-flex items-center gap-2 text-white/55 transition hover:text-white">
+            <ChevronUp size={15} /> Back to top
+          </a>
+        </div>
       </footer>
     </main>
   );

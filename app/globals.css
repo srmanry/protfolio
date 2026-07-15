@@ -4,13 +4,13 @@
 
 :root {
   color-scheme: dark;
-  --gold: #F59E0B;
-  --gold-mid: #FBBF24;
-  --gold-light: #1a1500;
-  --ink: #F9FAFB;
-  --bg: #0a0a0a;
-  --bg-card: #111111;
-  --bg-surface: #161616;
+  --bg: #090909;
+  --bg-secondary: #111111;
+  --accent: #ffb000;
+  --accent-soft: #ffc94a;
+  --text: #ffffff;
+  --text-muted: #b7b7b7;
+  --border: rgba(255, 255, 255, 0.08);
 }
 
 html,
@@ -21,42 +21,292 @@ body {
 }
 
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: "Poppins", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 176, 0, 0.14), transparent 26%),
+    radial-gradient(circle at 82% 16%, rgba(255, 176, 0, 0.1), transparent 22%),
+    radial-gradient(circle at 50% 120%, rgba(255, 176, 0, 0.06), transparent 34%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), "Inter", sans-serif;
 }
 
-.ink { color: var(--ink); }
-.accent { color: var(--gold); }
-
-.section-title {
-  @apply text-3xl font-bold md:text-4xl;
-  color: var(--ink);
+body::selection {
+  background: rgba(255, 176, 0, 0.2);
 }
 
-.section-label {
-  @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em];
-  color: var(--gold);
+a {
+  text-decoration: none;
 }
 
 .container-width {
-  @apply mx-auto max-w-6xl px-5 md:px-8;
+  @apply mx-auto w-full max-w-[1240px] px-5 md:px-8;
 }
 
-.card {
-  @apply rounded-2xl border border-white/[0.07] bg-[#111111] shadow-[0_4px_24px_rgba(245,158,11,0.06)];
+.site-background {
+  @apply pointer-events-none fixed inset-0 overflow-hidden;
+}
+
+.site-background__noise {
+  @apply absolute inset-0 opacity-[0.06];
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(circle at center, black, transparent 82%);
+}
+
+.site-background__grid {
+  @apply absolute inset-0 opacity-[0.045];
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
+}
+
+.site-background__orb {
+  @apply absolute rounded-full blur-3xl;
+}
+
+.site-background__orb--left {
+  left: -10rem;
+  top: 8rem;
+  height: 28rem;
+  width: 28rem;
+  background: rgba(255, 176, 0, 0.1);
+}
+
+.site-background__orb--right {
+  right: -8rem;
+  top: 10rem;
+  height: 20rem;
+  width: 20rem;
+  background: rgba(255, 201, 74, 0.08);
+}
+
+.site-nav {
+  @apply fixed inset-x-0 top-0 z-50 transition-all duration-300;
+}
+
+.site-nav--solid {
+  background: rgba(9, 9, 9, 0.72);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-link {
+  @apply text-sm font-medium transition hover:text-white;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.nav-toggle {
+  @apply inline-flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-xl transition hover:text-white;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.section-label {
+  @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.28em] backdrop-blur-xl;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 201, 74, 0.88);
+}
+
+.section-title {
+  @apply mt-5 text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white md:text-5xl;
+}
+
+.section-copy {
+  @apply text-base leading-8;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.hero-copy {
+  @apply text-base leading-8 md:text-lg;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.surface-card {
+  @apply rounded-[1.75rem] border shadow-[0_18px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project-shell {
+  @apply rounded-[2rem] border p-6 shadow-[0_30px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-8;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#F59E0B] to-[#FBBF24] px-7 py-3 text-sm font-semibold text-black shadow-[0_8px_24px_rgba(245,158,11,0.30)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(245,158,11,0.45)];
+  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,176,0,0.28)];
+  border-color: rgba(255, 176, 0, 0.6);
+  background: #ffb000;
 }
 
-.btn-outline {
-  @apply inline-flex items-center gap-2 rounded-xl border border-[#F59E0B]/40 bg-transparent px-7 py-3 text-sm font-semibold text-[#F59E0B] transition-all duration-200 hover:border-[#F59E0B] hover:bg-[#F59E0B]/10;
+.btn-secondary {
+  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:text-white;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* dot grid pattern */
-.dot-grid {
-  background-image: radial-gradient(circle, #F59E0B 1.5px, transparent 1.5px);
-  background-size: 14px 14px;
+.social-pill {
+  @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm backdrop-blur-xl transition duration-300 hover:text-white;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.hero-visual-shell {
+  @apply relative min-h-[620px] overflow-hidden rounded-[2.25rem] border p-8 shadow-[0_40px_120px_rgba(0,0,0,0.4)] backdrop-blur-xl;
+  border-color: rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at top, rgba(255, 176, 0, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+}
+
+.hero-visual__halo {
+  @apply absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl;
+  background: rgba(255, 176, 0, 0.13);
+}
+
+.hero-floating-card {
+  @apply absolute flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.hero-floating-card--top {
+  @apply right-8 top-8;
+}
+
+.hero-floating-card--bottom {
+  @apply bottom-8 left-8;
+}
+
+.phone-shell {
+  width: 19rem;
+  border-radius: 2.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  padding: 0.85rem;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.phone-screen {
+  min-height: 25rem;
+  border-radius: 1.7rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    #101010;
+  padding: 1rem;
+}
+
+.mockup-block {
+  @apply rounded-[1rem] border;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mockup-line {
+  @apply h-2 rounded-full;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mockup-chip {
+  @apply rounded-full border px-3 py-1 text-[0.68rem] font-medium;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.project-visual {
+  @apply relative overflow-hidden rounded-[1.8rem] border p-5 shadow-[0_25px_70px_rgba(0,0,0,0.28)];
+  border-color: rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at top right, rgba(255, 176, 0, 0.12), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.project-visual__top {
+  @apply mb-6 flex items-center justify-between gap-4;
+}
+
+.project-device-grid {
+  @apply grid items-end gap-4 sm:grid-cols-[1fr_0.54fr];
+}
+
+.project-device {
+  @apply rounded-[1.9rem] border p-3 shadow-[0_18px_40px_rgba(0,0,0,0.24)] backdrop-blur-xl;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.project-device--lg {
+  min-height: 24rem;
+}
+
+.project-device--sm {
+  min-height: 18rem;
+}
+
+.project-device__inner {
+  @apply h-full rounded-[1.45rem] p-4;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+}
+
+.skill-tag {
+  @apply rounded-full border px-3 py-1.5 text-xs font-medium;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.contact-shell {
+  @apply grid gap-8 rounded-[2rem] border p-6 shadow-[0_30px_90px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-8 lg:grid-cols-[0.9fr_1.1fr];
+  border-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 176, 0, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+.contact-meta {
+  @apply flex items-center gap-3 rounded-full border px-4 py-3 transition hover:text-white;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.input-shell {
+  @apply flex flex-col gap-2 text-sm;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.input-shell span {
+  @apply text-xs font-semibold uppercase tracking-[0.2em];
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.input-shell input,
+.input-shell textarea {
+  @apply w-full rounded-[1.2rem] border px-4 py-3 text-sm text-white outline-none transition;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.input-shell input::placeholder,
+.input-shell textarea::placeholder {
+  color: rgba(255, 255, 255, 0.24);
+}
+
+.input-shell input:focus,
+.input-shell textarea:focus {
+  border-color: rgba(255, 176, 0, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 1279px) {
+  .hero-visual-shell {
+    min-height: 30rem;
+  }
 }

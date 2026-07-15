@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"]
-});
-
 export const metadata: Metadata = {
-  title: "Md. Srsuman | Professional Portfolio",
-  description: "Professional portfolio showcasing adaptable skills, selected work, and career-ready strengths across tech and non-tech roles."
+  title: "Md. Srsuman | Premium Digital Portfolio",
+  description: "A premium personal portfolio built with modern design, thoughtful execution, and refined digital presentation."
 };
 
 export default function RootLayout({
@@ -19,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
