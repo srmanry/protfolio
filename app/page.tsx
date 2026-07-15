@@ -8,20 +8,22 @@ import { projects } from "@/data/projects";
 import {
   ArrowRight,
   Briefcase,
+  Bot,
   CheckCircle2,
   ChevronUp,
   Code2,
   Download,
   ExternalLink,
-  Globe,
   Mail,
   MapPin,
   Menu,
   MessageSquareQuote,
   MonitorSmartphone,
+  Rocket,
+  Search,
   Send,
   ShieldCheck,
-  Sparkles,
+  Smartphone,
   Workflow,
   X,
 } from "lucide-react";
@@ -35,38 +37,59 @@ const navItems = [
 
 const services = [
   {
-    Icon: Workflow,
-    title: "Strategy & Planning",
+    Icon: Smartphone,
+    title: "Flutter App Development",
     description:
-      "Clear thinking, thoughtful planning, and structured execution for digital work, team tasks, and business priorities.",
+      "Custom Flutter app development for Android and iOS with clean UI, structured architecture, API integration, and smooth user experience.",
     span: "lg:col-span-4",
   },
   {
-    Icon: MonitorSmartphone,
-    title: "Digital Product Execution",
+    Icon: Rocket,
+    title: "Google Play & App Store Publishing",
     description:
-      "Experience shipping polished applications, translating ideas into usable systems, and keeping details aligned from concept to delivery.",
+      "End-to-end support for app release, store listing setup, screenshots, signing, versioning, and publishing on both Google Play and the Apple App Store.",
     span: "lg:col-span-5",
   },
   {
     Icon: ShieldCheck,
-    title: "Reliable Support",
+    title: "Closed Testing Setup",
     description:
-      "Dependable follow-through, calm problem solving, and steady communication across remote, office, and collaborative environments.",
+      "Help with Google Play closed testing requirements, including the 14-day testing flow, tester management, release preparation, and submission guidance.",
     span: "lg:col-span-3",
   },
   {
-    Icon: Globe,
-    title: "Cross-Functional Communication",
+    Icon: Search,
+    title: "ASO Optimization",
     description:
-      "Comfortable working with clients, stakeholders, teammates, and changing requirements while keeping the work clear and professional.",
+      "App Store Optimization for better visibility with stronger titles, keywords, descriptions, visuals, and conversion-focused store presentation.",
+    span: "lg:col-span-6",
+  },
+  {
+    Icon: Bot,
+    title: "AI Feature Integration",
+    description:
+      "AI-powered features such as smart assistants, content generation, automation, recommendation flows, and modern AI-assisted product experiences.",
+    span: "lg:col-span-3",
+  },
+  {
+    Icon: Workflow,
+    title: "Ongoing App Support",
+    description:
+      "Post-launch improvements, bug fixing, performance tuning, store update handling, and practical support to keep the app stable and growing.",
+    span: "lg:col-span-3",
+  },
+  {
+    Icon: MonitorSmartphone,
+    title: "Product Planning & Execution",
+    description:
+      "From idea to release, I help shape app flow, plan features, refine execution, and move the product forward with clarity and quality.",
     span: "lg:col-span-6",
   },
   {
     Icon: Briefcase,
-    title: "Professional Adaptability",
+    title: "Client-Friendly Delivery",
     description:
-      "Able to contribute across tech, support, coordination, and broader digital roles without losing focus on quality or responsibility.",
+      "Clear communication, status updates, documentation, and professional handling throughout the full app development and publishing process.",
     span: "lg:col-span-6",
   },
 ];
@@ -440,15 +463,6 @@ export default function HomePage() {
               >
                 <AppMockup title="Execution" accent="bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))]" align="right" />
               </motion.div>
-
-              <div className="hero-floating-card hero-floating-card--top">
-                <Sparkles size={16} className="text-[#FFB000]" />
-                Premium visual systems
-              </div>
-              <div className="hero-floating-card hero-floating-card--bottom">
-                <CheckCircle2 size={16} className="text-[#FFB000]" />
-                Thoughtful delivery
-              </div>
             </div>
           </motion.div>
         </div>
@@ -484,8 +498,8 @@ export default function HomePage() {
       <SectionWrapper id="services" className="container-width relative z-10 pt-24 md:pt-32">
         <SectionHeading
           kicker="Services"
-          title="A premium, flexible skill set suited for digital work across different environments."
-          copy="The goal is not to be limited to a single label. The work reflects strategy, execution, communication, and modern digital professionalism."
+          title="Flutter app services built around development, publishing, growth, and long-term support."
+          copy="This section now highlights practical app-focused services: Flutter development, Google Play and App Store publishing, closed testing support, ASO, AI-powered features, and ongoing product improvement."
         />
 
         <div className="mt-10 grid gap-4 lg:grid-cols-12">

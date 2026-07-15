@@ -159,31 +159,12 @@ a {
 }
 
 .hero-visual-shell {
-  @apply relative min-h-[620px] overflow-hidden rounded-[2.25rem] border p-8 shadow-[0_40px_120px_rgba(0,0,0,0.4)] backdrop-blur-xl;
-  border-color: rgba(255, 255, 255, 0.1);
-  background:
-    radial-gradient(circle at top, rgba(255, 176, 0, 0.12), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  @apply relative min-h-[620px] p-4;
 }
 
 .hero-visual__halo {
   @apply absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl;
   background: rgba(255, 176, 0, 0.13);
-}
-
-.hero-floating-card {
-  @apply absolute flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.45);
-  color: rgba(255, 255, 255, 0.68);
-}
-
-.hero-floating-card--top {
-  @apply right-8 top-8;
-}
-
-.hero-floating-card--bottom {
-  @apply bottom-8 left-8;
 }
 
 .phone-shell {
