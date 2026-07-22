@@ -9,7 +9,6 @@ import {
   ArrowRight,
   Briefcase,
   Bot,
-  CheckCircle2,
   ChevronUp,
   Code2,
   Download,
@@ -189,10 +188,10 @@ function AppMockup({ title, accent, align }: { title: string; accent: string; al
       <div className="phone-screen">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-[0.62rem] uppercase tracking-[0.26em] text-white/35">Interface</p>
-            <h3 className="mt-1 text-sm font-semibold text-white">{title}</h3>
+            <p className="text-[0.62rem] uppercase tracking-[0.26em] text-emerald-950/35">Interface</p>
+            <h3 className="mt-1 text-sm font-semibold text-emerald-950">{title}</h3>
           </div>
-          <div className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.04]" />
+          <div className="h-8 w-8 rounded-full border border-emerald-900/10 bg-white/80" />
         </div>
         <div className={`mt-5 h-24 rounded-[1.25rem] ${accent}`} />
         <div className="mt-4 grid grid-cols-2 gap-3">
@@ -238,7 +237,7 @@ function ProjectShowcase({
           <div className="project-visual">
             <div className="project-visual__top">
               <span className="text-3xl">{project.icon}</span>
-              <span className="rounded-full border border-white/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/42">
+              <span className="rounded-full border border-emerald-900/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald-950/45">
                 {project.published ? `Published ${project.publishedDate}` : "Case Study"}
               </span>
             </div>
@@ -250,9 +249,9 @@ function ProjectShowcase({
                       <div className="mockup-line w-24" />
                       <div className="mockup-line w-16" />
                     </div>
-                    <div className="h-10 w-10 rounded-2xl border border-white/10 bg-white/[0.06]" />
+                    <div className="h-10 w-10 rounded-2xl border border-emerald-900/10 bg-white/80" />
                   </div>
-                  <div className="h-32 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(255,176,0,0.22),rgba(255,201,74,0.04))]" />
+                  <div className="h-32 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(31,138,84,0.24),rgba(103,196,141,0.08))]" />
                   <div className="mt-4 grid grid-cols-3 gap-3">
                     <div className="mockup-block h-12" />
                     <div className="mockup-block h-12" />
@@ -262,7 +261,7 @@ function ProjectShowcase({
               </div>
               <div className="project-device project-device--sm">
                 <div className="project-device__inner">
-                  <div className="h-20 rounded-[1.1rem] bg-white/[0.05]" />
+                  <div className="h-20 rounded-[1.1rem] bg-emerald-100/70" />
                   <div className="mt-3 space-y-2">
                     <div className="mockup-line w-16" />
                     <div className="mockup-line w-12" />
@@ -275,12 +274,12 @@ function ProjectShowcase({
         </div>
 
         <div className={!isEven ? "lg:col-start-1 lg:row-start-1" : ""}>
-          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#FFC94A]/80">
+          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-700/85">
             Case Study {String(index + 1).padStart(2, "0")}
           </span>
-          <h3 className="mt-4 text-3xl font-semibold text-white">{project.title}</h3>
-          <p className="mt-4 text-base leading-8 text-white/62">{project.summary}</p>
-          <p className="mt-4 text-sm leading-7 text-white/48">{project.details}</p>
+          <h3 className="mt-4 text-3xl font-semibold text-emerald-950">{project.title}</h3>
+          <p className="mt-4 text-base leading-8 text-emerald-900/70">{project.summary}</p>
+          <p className="mt-4 text-sm leading-7 text-emerald-950/58">{project.details}</p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {project.stack.map((item) => (
@@ -332,12 +331,12 @@ export default function HomePage() {
       <header className={`site-nav ${scrolled ? "site-nav--solid" : ""}`}>
         <div className="container-width flex items-center justify-between gap-6 py-4">
           <Link href="/" className="flex items-center gap-3" aria-label="Md. Srsuman Home">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#FFB000] text-sm font-extrabold text-black shadow-[0_10px_30px_rgba(255,176,0,0.22)]">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1F8A54] text-sm font-extrabold text-white shadow-[0_10px_30px_rgba(31,138,84,0.24)]">
               MS
             </div>
             <div>
-              <p className="text-lg font-semibold tracking-tight text-white">Md. Srsuman</p>
-              <p className="text-sm text-white/42">Professional Portfolio</p>
+              <p className="text-lg font-semibold tracking-tight text-emerald-950">Md. Srsuman</p>
+              <p className="text-sm text-emerald-950/42">Professional Portfolio</p>
             </div>
           </Link>
 
@@ -367,13 +366,13 @@ export default function HomePage() {
 
         {mobileMenuOpen ? (
           <div className="container-width pb-4 md:hidden">
-            <div className="rounded-[1.5rem] border border-white/10 bg-black/50 p-4 backdrop-blur-xl">
+            <div className="rounded-[1.5rem] border border-emerald-900/10 bg-white/85 p-4 backdrop-blur-xl">
               <div className="flex flex-col gap-3">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-white/75 transition hover:border-white/10 hover:bg-white/[0.03] hover:text-white"
+                    className="rounded-xl border border-transparent px-3 py-2 text-sm font-medium text-emerald-900/75 transition hover:border-emerald-900/10 hover:bg-emerald-50 hover:text-emerald-950"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -391,12 +390,12 @@ export default function HomePage() {
       <section className="container-width relative z-10 pt-32 md:pt-40">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div initial="hidden" animate="show" variants={fadeUp}>
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/65 backdrop-blur-xl">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#FFB000] shadow-[0_0_18px_rgba(255,176,0,0.7)]" />
+            <div className="inline-flex items-center gap-3 rounded-full border border-emerald-900/10 bg-white/80 px-4 py-2 text-sm font-medium text-emerald-900/70 backdrop-blur-xl">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#1F8A54] shadow-[0_0_18px_rgba(31,138,84,0.42)]" />
               Available for Opportunities
             </div>
 
-            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-white sm:text-6xl xl:text-[5.2rem]">
+            <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-emerald-950 sm:text-6xl xl:text-[5.2rem]">
               Build Digital Experiences
               <br />
               That Create Real Impact.
@@ -447,21 +446,21 @@ export default function HomePage() {
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute left-2 top-12 z-20 hidden xl:block"
               >
-                <AppMockup title="Experience" accent="bg-[linear-gradient(180deg,rgba(255,176,0,0.28),rgba(255,176,0,0.03))]" />
+                <AppMockup title="Experience" accent="bg-[linear-gradient(180deg,rgba(31,138,84,0.24),rgba(31,138,84,0.05))]" />
               </motion.div>
               <motion.div
                 animate={{ y: [0, 14, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
                 className="relative z-30 mx-auto max-w-[21rem]"
               >
-                <AppMockup title="Product Vision" accent="bg-[linear-gradient(180deg,rgba(255,201,74,0.35),rgba(255,201,74,0.05))]" />
+                <AppMockup title="Product Vision" accent="bg-[linear-gradient(180deg,rgba(103,196,141,0.32),rgba(103,196,141,0.08))]" />
               </motion.div>
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
                 className="absolute bottom-6 right-0 z-10 hidden xl:block"
               >
-                <AppMockup title="Execution" accent="bg-[linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))]" align="right" />
+                <AppMockup title="Execution" accent="bg-[linear-gradient(180deg,rgba(214,241,223,0.95),rgba(255,255,255,0.72))]" align="right" />
               </motion.div>
             </div>
           </motion.div>
@@ -487,8 +486,8 @@ export default function HomePage() {
                 variants={fadeUp}
                 className="surface-card p-6"
               >
-                <p className="text-3xl font-semibold tracking-[-0.04em] text-white">{item.value}</p>
-                <p className="mt-3 text-sm leading-6 text-white/55">{item.label}</p>
+                <p className="text-3xl font-semibold tracking-[-0.04em] text-emerald-950">{item.value}</p>
+                <p className="mt-3 text-sm leading-6 text-emerald-900/58">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -511,13 +510,13 @@ export default function HomePage() {
               whileInView="show"
               viewport={{ once: true, amount: 0.18 }}
               variants={fadeUp}
-              className={`surface-card group p-6 transition duration-300 hover:-translate-y-1 hover:border-[#FFB000]/30 ${span}`}
+              className={`surface-card group p-6 transition duration-300 hover:-translate-y-1 hover:border-[#1F8A54]/25 ${span}`}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] text-[#FFB000] transition duration-300 group-hover:border-[#FFB000]/30 group-hover:bg-[#FFB000]/10">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-900/10 bg-emerald-50 text-[#1F8A54] transition duration-300 group-hover:border-[#1F8A54]/25 group-hover:bg-[#1F8A54]/10">
                 <Icon size={22} />
               </div>
-              <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
-              <p className="mt-4 text-sm leading-7 text-white/56">{description}</p>
+              <h3 className="mt-6 text-xl font-semibold text-emerald-950">{title}</h3>
+              <p className="mt-4 text-sm leading-7 text-emerald-900/60">{description}</p>
             </motion.article>
           ))}
         </div>
@@ -530,7 +529,7 @@ export default function HomePage() {
           copy="The emphasis is on steady execution, learning, and the ability to support meaningful outcomes in both technical and broader work contexts."
         />
 
-        <div className="relative mt-12 space-y-6 before:absolute before:left-[18px] before:top-3 before:h-[calc(100%-1.5rem)] before:w-px before:bg-[linear-gradient(180deg,rgba(255,176,0,0.35),transparent)]">
+        <div className="relative mt-12 space-y-6 before:absolute before:left-[18px] before:top-3 before:h-[calc(100%-1.5rem)] before:w-px before:bg-[linear-gradient(180deg,rgba(31,138,84,0.35),transparent)]">
           {experiences.map((item, index) => (
             <motion.article
               key={item.role}
@@ -541,19 +540,19 @@ export default function HomePage() {
               variants={fadeUp}
               className="relative pl-14"
             >
-              <div className="absolute left-[9px] top-7 h-5 w-5 rounded-full border border-[#FFB000]/50 bg-[#0b0b0b] shadow-[0_0_0_6px_rgba(255,176,0,0.08)]" />
+              <div className="absolute left-[9px] top-7 h-5 w-5 rounded-full border border-[#1F8A54]/45 bg-[#f5faf6] shadow-[0_0_0_6px_rgba(31,138,84,0.08)]" />
               <div className="surface-card p-6 md:p-7">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.24em] text-[#FFC94A]/75">{item.duration}</p>
-                    <h3 className="mt-2 text-2xl font-semibold text-white">{item.role}</h3>
-                    <p className="mt-1 text-sm text-white/42">{item.company}</p>
+                    <p className="text-sm uppercase tracking-[0.24em] text-emerald-700/75">{item.duration}</p>
+                    <h3 className="mt-2 text-2xl font-semibold text-emerald-950">{item.role}</h3>
+                    <p className="mt-1 text-sm text-emerald-950/42">{item.company}</p>
                   </div>
-                  <div className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-white/60">
+                  <div className="rounded-full border border-emerald-900/10 bg-white/80 px-4 py-2 text-sm text-emerald-900/60">
                     Vertical Timeline
                   </div>
                 </div>
-                <p className="mt-5 max-w-3xl text-sm leading-7 text-white/56">{item.description}</p>
+                <p className="mt-5 max-w-3xl text-sm leading-7 text-emerald-900/60">{item.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {item.bullets.map((bullet) => (
                     <span key={bullet} className="skill-tag">
@@ -602,18 +601,18 @@ export default function HomePage() {
               >
                 <div className="flex items-end justify-between gap-3">
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{skill.label}</h3>
-                    <p className="mt-1 text-sm text-white/46">{skill.detail}</p>
+                    <h3 className="text-lg font-semibold text-emerald-950">{skill.label}</h3>
+                    <p className="mt-1 text-sm text-emerald-950/50">{skill.detail}</p>
                   </div>
-                  <span className="text-sm font-semibold text-[#FFC94A]">{skill.value}%</span>
+                  <span className="text-sm font-semibold text-[#1F8A54]">{skill.value}%</span>
                 </div>
-                <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                <div className="mt-4 h-2 overflow-hidden rounded-full bg-emerald-900/10">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.value}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.1, ease: "easeOut", delay: index * 0.08 }}
-                    className="h-full rounded-full bg-[linear-gradient(90deg,#FFB000,#FFC94A)]"
+                    className="h-full rounded-full bg-[linear-gradient(90deg,#1F8A54,#67C48D)]"
                   />
                 </div>
               </motion.div>
@@ -640,9 +639,9 @@ export default function HomePage() {
               variants={fadeUp}
               className="surface-card p-6"
             >
-              <MessageSquareQuote size={22} className="text-[#FFB000]" />
-              <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-white/55">{item.body}</p>
+              <MessageSquareQuote size={22} className="text-[#1F8A54]" />
+              <h3 className="mt-5 text-xl font-semibold text-emerald-950">{item.title}</h3>
+              <p className="mt-4 text-sm leading-7 text-emerald-900/60">{item.body}</p>
             </motion.article>
           ))}
         </div>
@@ -658,13 +657,13 @@ export default function HomePage() {
               professional environments. If the work values clarity, sincerity, and quality, I would love to connect.
             </p>
 
-            <div className="mt-8 space-y-4 text-sm text-white/62">
+            <div className="mt-8 space-y-4 text-sm text-emerald-900/62">
               <a href="mailto:yourname@gmail.com" className="contact-meta">
-                <Mail size={16} className="text-[#FFB000]" />
+                <Mail size={16} className="text-[#1F8A54]" />
                 yourname@gmail.com
               </a>
               <div className="contact-meta">
-                <MapPin size={16} className="text-[#FFB000]" />
+                <MapPin size={16} className="text-[#1F8A54]" />
                 Available for remote and office opportunities
               </div>
             </div>
@@ -696,7 +695,7 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <footer className="container-width relative z-10 mt-20 flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-center text-sm text-white/38 md:flex-row">
+      <footer className="container-width relative z-10 mt-20 flex flex-col items-center justify-between gap-4 border-t border-emerald-900/10 py-8 text-center text-sm text-emerald-900/42 md:flex-row">
         <p>© {new Date().getFullYear()} Md. Srsuman. Crafted with care for a premium digital presence.</p>
         <div className="flex items-center gap-4">
           {socials.map(({ label, href, icon: Icon }) => (
@@ -705,13 +704,13 @@ export default function HomePage() {
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel={href.startsWith("http") ? "noreferrer" : undefined}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-white/55 transition hover:border-[#FFB000]/30 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-900/10 bg-white/75 px-3 py-2 text-emerald-900/60 transition hover:border-[#1F8A54]/30 hover:text-[#1F8A54]"
             >
               <Icon size={14} />
               {label}
             </a>
           ))}
-          <a href="#top" className="inline-flex items-center gap-2 text-white/55 transition hover:text-white">
+          <a href="#top" className="inline-flex items-center gap-2 text-emerald-900/60 transition hover:text-[#1F8A54]">
             <ChevronUp size={15} /> Back to top
           </a>
         </div>

@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
-  --bg: #090909;
-  --bg-secondary: #111111;
-  --accent: #ffb000;
-  --accent-soft: #ffc94a;
-  --text: #ffffff;
-  --text-muted: #b7b7b7;
-  --border: rgba(255, 255, 255, 0.08);
+  color-scheme: light;
+  --bg: #f5faf6;
+  --bg-secondary: #ffffff;
+  --accent: #1f8a54;
+  --accent-soft: #67c48d;
+  --text: #123524;
+  --text-muted: #5d7a69;
+  --border: rgba(21, 91, 56, 0.12);
 }
 
 html,
@@ -22,16 +22,16 @@ body {
 
 body {
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 176, 0, 0.14), transparent 26%),
-    radial-gradient(circle at 82% 16%, rgba(255, 176, 0, 0.1), transparent 22%),
-    radial-gradient(circle at 50% 120%, rgba(255, 176, 0, 0.06), transparent 34%),
+    radial-gradient(circle at 18% 12%, rgba(31, 138, 84, 0.12), transparent 26%),
+    radial-gradient(circle at 82% 16%, rgba(103, 196, 141, 0.14), transparent 22%),
+    radial-gradient(circle at 50% 120%, rgba(31, 138, 84, 0.06), transparent 34%),
     var(--bg);
   color: var(--text);
   font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 body::selection {
-  background: rgba(255, 176, 0, 0.2);
+  background: rgba(31, 138, 84, 0.2);
 }
 
 a {
@@ -49,8 +49,8 @@ a {
 .site-background__noise {
   @apply absolute inset-0 opacity-[0.06];
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(31, 138, 84, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 138, 84, 0.04) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(circle at center, black, transparent 82%);
 }
@@ -58,8 +58,8 @@ a {
 .site-background__grid {
   @apply absolute inset-0 opacity-[0.045];
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(31, 138, 84, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 138, 84, 0.08) 1px, transparent 1px);
   background-size: 120px 120px;
 }
 
@@ -72,7 +72,7 @@ a {
   top: 8rem;
   height: 28rem;
   width: 28rem;
-  background: rgba(255, 176, 0, 0.1);
+  background: rgba(31, 138, 84, 0.14);
 }
 
 .site-background__orb--right {
@@ -80,7 +80,7 @@ a {
   top: 10rem;
   height: 20rem;
   width: 20rem;
-  background: rgba(255, 201, 74, 0.08);
+  background: rgba(103, 196, 141, 0.12);
 }
 
 .site-nav {
@@ -88,74 +88,91 @@ a {
 }
 
 .site-nav--solid {
-  background: rgba(9, 9, 9, 0.72);
+  background: rgba(245, 250, 246, 0.82);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
 }
 
 .nav-link {
-  @apply text-sm font-medium transition hover:text-white;
-  color: rgba(255, 255, 255, 0.58);
+  @apply text-sm font-medium transition;
+  color: rgba(18, 53, 36, 0.62);
+}
+
+.nav-link:hover {
+  color: var(--accent);
 }
 
 .nav-toggle {
-  @apply inline-flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-xl transition hover:text-white;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.75);
+  @apply inline-flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-xl transition;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  color: rgba(18, 53, 36, 0.75);
+}
+
+.nav-toggle:hover {
+  color: var(--accent);
 }
 
 .section-label {
   @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.28em] backdrop-blur-xl;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 201, 74, 0.88);
+  border-color: rgba(21, 91, 56, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(31, 138, 84, 0.88);
 }
 
 .section-title {
-  @apply mt-5 text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white md:text-5xl;
+  @apply mt-5 text-4xl font-semibold leading-[1.04] tracking-[-0.04em] md:text-5xl;
+  color: var(--text);
 }
 
 .section-copy {
   @apply text-base leading-8;
-  color: rgba(255, 255, 255, 0.56);
+  color: rgba(18, 53, 36, 0.64);
 }
 
 .hero-copy {
   @apply text-base leading-8 md:text-lg;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(18, 53, 36, 0.7);
 }
 
 .surface-card {
-  @apply rounded-[1.75rem] border shadow-[0_18px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.035);
+  @apply rounded-[1.75rem] border shadow-[0_18px_80px_rgba(31,138,84,0.08)] backdrop-blur-xl;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .project-shell {
-  @apply rounded-[2rem] border p-6 shadow-[0_30px_80px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-8;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  @apply rounded-[2rem] border p-6 shadow-[0_30px_80px_rgba(31,138,84,0.09)] backdrop-blur-xl md:p-8;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(239, 247, 241, 0.9));
 }
 
 .btn-primary {
-  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(255,176,0,0.28)];
-  border-color: rgba(255, 176, 0, 0.6);
-  background: #ffb000;
+  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(31,138,84,0.24)];
+  border-color: rgba(31, 138, 84, 0.5);
+  background: var(--accent);
 }
 
 .btn-secondary {
-  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:-translate-y-0.5 hover:text-white;
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.8);
+  @apply inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold backdrop-blur-xl transition duration-300 hover:-translate-y-0.5;
+  border-color: rgba(21, 91, 56, 0.12);
+  background: rgba(255, 255, 255, 0.8);
+  color: rgba(18, 53, 36, 0.78);
+}
+
+.btn-secondary:hover {
+  color: var(--accent);
 }
 
 .social-pill {
-  @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm backdrop-blur-xl transition duration-300 hover:text-white;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.56);
+  @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm backdrop-blur-xl transition duration-300;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(18, 53, 36, 0.62);
+}
+
+.social-pill:hover {
+  color: var(--accent);
 }
 
 .hero-visual-shell {
@@ -164,16 +181,16 @@ a {
 
 .hero-visual__halo {
   @apply absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl;
-  background: rgba(255, 176, 0, 0.13);
+  background: rgba(31, 138, 84, 0.14);
 }
 
 .phone-shell {
   width: 19rem;
   border-radius: 2.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(21, 91, 56, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(236, 247, 240, 0.88));
   padding: 0.85rem;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 28px 70px rgba(31, 138, 84, 0.16);
   backdrop-filter: blur(18px);
 }
 
@@ -181,35 +198,35 @@ a {
   min-height: 25rem;
   border-radius: 1.7rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
-    #101010;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(232, 245, 237, 0.92)),
+    #ffffff;
   padding: 1rem;
 }
 
 .mockup-block {
   @apply rounded-[1rem] border;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(21, 91, 56, 0.08);
+  background: rgba(31, 138, 84, 0.08);
 }
 
 .mockup-line {
   @apply h-2 rounded-full;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(31, 138, 84, 0.14);
 }
 
 .mockup-chip {
   @apply rounded-full border px-3 py-1 text-[0.68rem] font-medium;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.62);
+  border-color: rgba(21, 91, 56, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(18, 53, 36, 0.64);
 }
 
 .project-visual {
-  @apply relative overflow-hidden rounded-[1.8rem] border p-5 shadow-[0_25px_70px_rgba(0,0,0,0.28)];
-  border-color: rgba(255, 255, 255, 0.1);
+  @apply relative overflow-hidden rounded-[1.8rem] border p-5 shadow-[0_25px_70px_rgba(31,138,84,0.12)];
+  border-color: rgba(21, 91, 56, 0.08);
   background:
-    radial-gradient(circle at top right, rgba(255, 176, 0, 0.12), transparent 26%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    radial-gradient(circle at top right, rgba(31, 138, 84, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(236, 247, 240, 0.88));
 }
 
 .project-visual__top {
@@ -221,9 +238,9 @@ a {
 }
 
 .project-device {
-  @apply rounded-[1.9rem] border p-3 shadow-[0_18px_40px_rgba(0,0,0,0.24)] backdrop-blur-xl;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.35);
+  @apply rounded-[1.9rem] border p-3 shadow-[0_18px_40px_rgba(31,138,84,0.1)] backdrop-blur-xl;
+  border-color: rgba(21, 91, 56, 0.08);
+  background: rgba(255, 255, 255, 0.84);
 }
 
 .project-device--lg {
@@ -236,54 +253,59 @@ a {
 
 .project-device__inner {
   @apply h-full rounded-[1.45rem] p-4;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(180deg, rgba(248, 252, 249, 0.98), rgba(233, 246, 238, 0.95));
 }
 
 .skill-tag {
   @apply rounded-full border px-3 py-1.5 text-xs font-medium;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(255, 255, 255, 0.68);
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: rgba(18, 53, 36, 0.7);
 }
 
 .contact-shell {
-  @apply grid gap-8 rounded-[2rem] border p-6 shadow-[0_30px_90px_rgba(0,0,0,0.32)] backdrop-blur-xl md:p-8 lg:grid-cols-[0.9fr_1.1fr];
-  border-color: rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, rgba(255, 176, 0, 0.08), rgba(255, 255, 255, 0.03));
+  @apply grid gap-8 rounded-[2rem] border p-6 shadow-[0_30px_90px_rgba(31,138,84,0.1)] backdrop-blur-xl md:p-8 lg:grid-cols-[0.9fr_1.1fr];
+  border-color: rgba(21, 91, 56, 0.1);
+  background: linear-gradient(180deg, rgba(233, 246, 238, 0.92), rgba(255, 255, 255, 0.96));
 }
 
 .contact-meta {
-  @apply flex items-center gap-3 rounded-full border px-4 py-3 transition hover:text-white;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  @apply flex items-center gap-3 rounded-full border px-4 py-3 transition;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.contact-meta:hover {
+  color: var(--accent);
 }
 
 .input-shell {
   @apply flex flex-col gap-2 text-sm;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(18, 53, 36, 0.7);
 }
 
 .input-shell span {
   @apply text-xs font-semibold uppercase tracking-[0.2em];
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(18, 53, 36, 0.5);
 }
 
 .input-shell input,
 .input-shell textarea {
-  @apply w-full rounded-[1.2rem] border px-4 py-3 text-sm text-white outline-none transition;
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.03);
+  @apply w-full rounded-[1.2rem] border px-4 py-3 text-sm outline-none transition;
+  border-color: rgba(21, 91, 56, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text);
 }
 
 .input-shell input::placeholder,
 .input-shell textarea::placeholder {
-  color: rgba(255, 255, 255, 0.24);
+  color: rgba(18, 53, 36, 0.3);
 }
 
 .input-shell input:focus,
 .input-shell textarea:focus {
-  border-color: rgba(255, 176, 0, 0.35);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(31, 138, 84, 0.35);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 @media (max-width: 1279px) {

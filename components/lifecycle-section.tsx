@@ -86,16 +86,16 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
           onMouseLeave={() => setPaused(false)}
         >
           <svg width={SIZE} height={SIZE} className="absolute inset-0 pointer-events-none">
-            <circle cx={CX} cy={CY} r={R} fill="none" stroke="#F59E0B" strokeOpacity={0.12} strokeWidth={1} strokeDasharray="4 7" />
+            <circle cx={CX} cy={CY} r={R} fill="none" stroke="#1F8A54" strokeOpacity={0.14} strokeWidth={1} strokeDasharray="4 7" />
             {phases.map((_, i) => (
               <path key={i} d={arcPath(i, N)} fill="none"
-                stroke="#F59E0B"
-                strokeOpacity={i === active ? 0.75 : 0.14}
+                stroke="#1F8A54"
+                strokeOpacity={i === active ? 0.7 : 0.14}
                 strokeWidth={i === active ? 2.5 : 1.5}
                 strokeLinecap="round"
               />
             ))}
-            <circle cx={CX} cy={CY} r={68} fill="#F59E0B" fillOpacity={0.04} stroke="#F59E0B" strokeOpacity={0.08} strokeWidth={1} />
+            <circle cx={CX} cy={CY} r={68} fill="#1F8A54" fillOpacity={0.05} stroke="#1F8A54" strokeOpacity={0.1} strokeWidth={1} />
           </svg>
 
           {/* Nodes */}
@@ -112,18 +112,18 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
                 >
                   <motion.div
                     animate={{
-                      backgroundColor: isActive ? "#F59E0B" : "#1c1c1c",
-                      borderColor:     isActive ? "#F59E0B" : "#2a2a2a",
-                      boxShadow:       isActive ? "0 0 0 6px rgba(245,158,11,0.14), 0 0 28px rgba(245,158,11,0.4)" : "none",
+                      backgroundColor: isActive ? "#1F8A54" : "#ffffff",
+                      borderColor:     isActive ? "#1F8A54" : "rgba(21, 91, 56, 0.14)",
+                      boxShadow:       isActive ? "0 0 0 6px rgba(31,138,84,0.14), 0 0 28px rgba(31,138,84,0.28)" : "0 10px 24px rgba(31,138,84,0.06)",
                     }}
                     transition={{ duration: 0.3 }}
                     className="flex items-center justify-center rounded-full border-2"
                     style={{ width: 52, height: 52 }}
                   >
-                    <Icon size={20} color={isActive ? "#000" : "#555"} />
+                    <Icon size={20} color={isActive ? "#ffffff" : "#4f6b5d"} />
                   </motion.div>
                   <motion.span
-                    animate={{ color: isActive ? "#F59E0B" : "#444" }}
+                    animate={{ color: isActive ? "#1F8A54" : "#5d7a69" }}
                     transition={{ duration: 0.3 }}
                     className="text-[10px] font-semibold whitespace-nowrap"
                   >
@@ -145,10 +145,10 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
                 transition={{ duration: 0.25 }}
                 className="text-center"
               >
-                <p className="text-5xl font-black text-[#F59E0B] leading-none">
+                <p className="text-5xl font-black text-[#1F8A54] leading-none">
                   {String(active + 1).padStart(2, "0")}
                 </p>
-                <p className="mt-1 text-[11px] font-medium text-white/30">of {N}</p>
+                <p className="mt-1 text-[11px] font-medium text-emerald-950/35">of {N}</p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -165,20 +165,20 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
               transition={{ duration: 0.35 }}
             >
               <div className="flex items-center gap-4 mb-5">
-                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#F59E0B] shadow-[0_8px_24px_rgba(245,158,11,0.3)]">
-                  <ActiveIcon size={24} color="#000" />
+                <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#1F8A54] shadow-[0_8px_24px_rgba(31,138,84,0.24)]">
+                  <ActiveIcon size={24} color="#fff" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#F59E0B]/50 uppercase tracking-[0.18em]">
+                  <p className="text-xs font-semibold text-[#1F8A54]/60 uppercase tracking-[0.18em]">
                     Step {active + 1} / {N}
                   </p>
-                  <h3 className="text-2xl font-bold text-white leading-tight font-mono">
+                  <h3 className="text-2xl font-bold text-emerald-950 leading-tight font-mono">
                     {phases[active].title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-[0.95rem] leading-relaxed text-white/55">
+              <p className="text-[0.95rem] leading-relaxed text-emerald-900/60">
                 {phases[active].desc}
               </p>
 
@@ -188,7 +188,7 @@ function LifecycleCircle({ phases, label, title }: { phases: Phase[]; label: str
                     key={i}
                     onClick={() => { setActive(i); setPaused(true); }}
                     className="h-1.5 rounded-full transition-all duration-300"
-                    style={{ width: i === active ? 28 : 8, background: i === active ? "#F59E0B" : "#2a2a2a" }}
+                    style={{ width: i === active ? 28 : 8, background: i === active ? "#1F8A54" : "rgba(21, 91, 56, 0.14)" }}
                   />
                 ))}
               </div>
