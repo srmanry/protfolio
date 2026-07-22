@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Briefcase,
   Bot,
+  CheckCircle2,
   ChevronUp,
   Code2,
   Download,
@@ -94,7 +95,7 @@ const services = [
 ];
 
 const stats = [
-  { value: "04", label: "Completed Projects" },
+  { value: "05", label: "Completed Projects" },
   { value: "04+", label: "Years of Active Learning" },
   { value: "2024", label: "Published App Releases" },
   { value: "Remote + Office", label: "Preferred Work Modes" },
@@ -185,9 +186,9 @@ function AppMockup({ title, accent, align }: { title: string; accent: string; al
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`phone-shell ${align === "right" ? "ml-auto" : ""}`}
     >
-      <div className="phone-screen">
-        <div className="flex items-center justify-between">
-          <div>
+        <div className="phone-screen">
+          <div className="flex items-center justify-between">
+            <div>
             <p className="text-[0.62rem] uppercase tracking-[0.26em] text-emerald-950/35">Interface</p>
             <h3 className="mt-1 text-sm font-semibold text-emerald-950">{title}</h3>
           </div>
@@ -213,96 +214,97 @@ function AppMockup({ title, accent, align }: { title: string; accent: string; al
   );
 }
 
-function ProjectShowcase({
+function getProjectAvailability(project: (typeof projects)[number]) {
+  return [
+    project.playStore ? "Google Play" : null,
+    project.appStore ? "App Store" : null,
+    project.github ? "GitHub" : null,
+  ].filter(Boolean) as string[];
+}
+
+function ProjectCard({
   project,
   index,
 }: {
   project: (typeof projects)[number];
   index: number;
 }) {
-  const isEven = index % 2 === 0;
-  const primaryLink = project.appStore ?? project.playStore ?? project.github ?? `/projects/${project.slug}`;
+  const availability = getProjectAvailability(project);
 
   return (
     <motion.article
       custom={index * 0.08}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={{ once: true, amount: 0.15 }}
       variants={fadeUp}
-      className="project-shell"
+      className="surface-card group flex h-full flex-col p-5 md:p-6"
     >
-      <div className={`grid items-center gap-8 lg:grid-cols-[1.08fr_0.92fr] ${!isEven ? "lg:grid-flow-dense" : ""}`}>
-        <div className={!isEven ? "lg:col-start-2" : ""}>
-          <div className="project-visual">
-            <div className="project-visual__top">
-              <span className="text-3xl">{project.icon}</span>
-              <span className="rounded-full border border-emerald-900/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald-950/45">
-                {project.published ? `Published ${project.publishedDate}` : "Case Study"}
-              </span>
-            </div>
-            <div className="project-device-grid">
-              <div className="project-device project-device--lg">
-                <div className="project-device__inner">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="mockup-line w-24" />
-                      <div className="mockup-line w-16" />
-                    </div>
-                    <div className="h-10 w-10 rounded-2xl border border-emerald-900/10 bg-white/80" />
-                  </div>
-                  <div className="h-32 rounded-[1.5rem] bg-[linear-gradient(135deg,rgba(31,138,84,0.24),rgba(103,196,141,0.08))]" />
-                  <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="mockup-block h-12" />
-                    <div className="mockup-block h-12" />
-                    <div className="mockup-block h-12" />
-                  </div>
-                </div>
-              </div>
-              <div className="project-device project-device--sm">
-                <div className="project-device__inner">
-                  <div className="h-20 rounded-[1.1rem] bg-emerald-100/70" />
-                  <div className="mt-3 space-y-2">
-                    <div className="mockup-line w-16" />
-                    <div className="mockup-line w-12" />
-                    <div className="mockup-line w-full" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={!isEven ? "lg:col-start-1 lg:row-start-1" : ""}>
-          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-emerald-700/85">
-            Case Study {String(index + 1).padStart(2, "0")}
+      <div className="flex items-start gap-4">
+        <div
+          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border shadow-[0_16px_36px_rgba(31,138,84,0.12)]"
+          style={{
+            background: project.logoBackground,
+            borderColor: "rgba(21, 91, 56, 0.1)",
+          }}
+        >
+          <span className="text-lg font-extrabold tracking-[-0.04em]" style={{ color: project.logoAccent }}>
+            {project.logoText}
           </span>
-          <h3 className="mt-4 text-3xl font-semibold text-emerald-950">{project.title}</h3>
-          <p className="mt-4 text-base leading-8 text-emerald-900/70">{project.summary}</p>
-          <p className="mt-4 text-sm leading-7 text-emerald-950/58">{project.details}</p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.stack.map((item) => (
-              <span key={item} className="skill-tag">
-                {item}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href={primaryLink} target="_blank" rel="noreferrer" className="btn-primary">
-              <ExternalLink size={16} /> Live Demo
-            </a>
-            {project.github ? (
-              <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary">
-                <Code2 size={16} /> GitHub
-              </a>
-            ) : null}
-            <Link href={`/projects/${project.slug}`} className="btn-secondary">
-              <ArrowRight size={16} /> Case Study
-            </Link>
-          </div>
         </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-xl font-semibold text-emerald-950">{project.title}</h3>
+            {project.published ? (
+              <span className="rounded-full border border-emerald-900/10 bg-white/80 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-emerald-700/80">
+                Published
+              </span>
+            ) : null}
+          </div>
+          <p className="mt-1 text-sm text-emerald-900/55">
+            {availability.length ? `Available on ${availability.join(", ")}` : "Private case study"}
+          </p>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700/70">
+            Project {String(index + 1).padStart(2, "0")}
+          </p>
+        </div>
+      </div>
+
+      <p className="mt-4 min-h-[5.5rem] text-sm leading-6 text-emerald-900/68">{project.cardSummary}</p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.stack.slice(0, 3).map((item) => (
+          <span key={item} className="skill-tag">
+            {item}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.playStore ? (
+          <a href={project.playStore} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-xs">
+            <ExternalLink size={14} /> Google Play
+          </a>
+        ) : null}
+        {project.appStore ? (
+          <a href={project.appStore} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-xs">
+            <ExternalLink size={14} /> App Store
+          </a>
+        ) : null}
+        {project.github ? (
+          <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-xs">
+            <Code2 size={14} /> GitHub
+          </a>
+        ) : null}
+        <Link href={`/projects/${project.slug}`} className="btn-primary px-4 py-2 text-xs">
+          <ArrowRight size={14} /> Details
+        </Link>
+      </div>
+
+      <div className="mt-4 border-t border-emerald-900/8 pt-4 text-sm text-emerald-900/56">
+        <span className="font-medium text-emerald-800/80">Where published:</span>{" "}
+        {availability.length ? availability.join(", ") : "Not publicly linked"}
       </div>
     </motion.article>
   );
@@ -569,13 +571,13 @@ export default function HomePage() {
       <SectionWrapper id="projects" className="container-width relative z-10 pt-24 md:pt-32">
         <SectionHeading
           kicker="Projects"
-          title="Selected work presented as premium product case studies."
-          copy="The layout stays far away from ordinary portfolio cards. Each project is framed like a refined product story with strong visual hierarchy and cleaner interaction."
+          title="Compact project cards with logo, short details, and direct store links."
+          copy="Each card now keeps the important things visible at a glance: app logo, short summary, publishing platforms, and quick links to Google Play, App Store, GitHub, or details."
         />
 
-        <div className="mt-12 space-y-8">
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
-            <ProjectShowcase key={project.slug} project={project} index={index} />
+            <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
       </SectionWrapper>
@@ -594,13 +596,13 @@ export default function HomePage() {
                 key={skill.label}
                 custom={index * 0.08}
                 initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={fadeUp}
-                className="surface-card p-5"
-              >
-                <div className="flex items-end justify-between gap-3">
-                  <div>
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeUp}
+              className="surface-card p-5"
+            >
+              <div className="flex items-end justify-between gap-3">
+                <div>
                     <h3 className="text-lg font-semibold text-emerald-950">{skill.label}</h3>
                     <p className="mt-1 text-sm text-emerald-950/50">{skill.detail}</p>
                   </div>

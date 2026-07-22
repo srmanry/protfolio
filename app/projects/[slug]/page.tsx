@@ -20,17 +20,36 @@ export default function ProjectDetailsPage({ params }: Props) {
     notFound();
   }
 
+  const availability = [
+    project.playStore ? "Google Play" : null,
+    project.appStore ? "App Store" : null,
+    project.github ? "GitHub" : null,
+  ].filter(Boolean) as string[];
+
   return (
     <main className="container-width py-10 md:py-14">
       <Link href="/#projects" className="text-sm font-semibold text-emerald-900/55 hover:text-[#1F8A54] transition">
         &larr; Back to Projects
       </Link>
 
-      <div className="mt-5 flex items-start gap-3">
-        <span className="text-3xl">{project.icon}</span>
+      <div className="mt-5 flex items-start gap-4">
+        <div
+          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border shadow-[0_16px_36px_rgba(31,138,84,0.12)]"
+          style={{
+            background: project.logoBackground,
+            borderColor: "rgba(21, 91, 56, 0.1)",
+          }}
+        >
+          <span className="text-lg font-extrabold tracking-[-0.04em]" style={{ color: project.logoAccent }}>
+            {project.logoText}
+          </span>
+        </div>
         <div>
           <h1 className="text-3xl font-bold text-emerald-950 md:text-4xl">{project.title}</h1>
           <p className="mt-3 max-w-3xl text-emerald-900/65">{project.details}</p>
+          <p className="mt-3 text-sm text-emerald-900/55">
+            {availability.length ? `Available on ${availability.join(", ")}` : "Private case study"}
+          </p>
           {project.published && project.publishedDate ? (
             <p className="mt-2 text-sm font-semibold text-[#1F8A54]/65">
               Published: {project.publishedDate}
