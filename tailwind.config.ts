@@ -9,14 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#f7f4ef",
-        paper: "#fffdf8",
-        ink: "#1b1b1a",
-        accent: "#0f766e",
-        accentSoft: "#ccfbf1"
+        navy: "#0B1220",
+        "navy-deep": "#070B14",
+        blue: "#2563EB",
+        "blue-bright": "#38BDF8",
+        ink: "#FFFFFF",
+        "ink-muted": "#CBD5E1",
+        "ink-faint": "#94A3B8"
+      },
+      fontFamily: {
+        sans: ["var(--font-jakarta)", "Inter", "sans-serif"]
       },
       boxShadow: {
-        card: "0 20px 45px -25px rgba(0, 0, 0, 0.25)"
+        card: "0 20px 45px -25px rgba(0, 0, 0, 0.6)",
+        glow: "0 0 0 1px rgba(37, 99, 235, 0.4), 0 12px 40px -8px rgba(37, 99, 235, 0.45)"
       }
     }
   },

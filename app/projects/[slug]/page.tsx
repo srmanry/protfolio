@@ -21,23 +21,30 @@ export default function ProjectDetailsPage({ params }: Props) {
   }
 
   const availability = [
-    project.playStore ? "Google Play" : null,
-    project.appStore ? "App Store" : null,
+    project.playStore ? "Android" : null,
+    project.appStore ? "iOS" : null,
     project.github ? "GitHub" : null,
   ].filter(Boolean) as string[];
+  const isPublishingOnly = project.category === "publishing";
 
   return (
-    <main className="container-width py-10 md:py-14">
-      <Link href="/#projects" className="text-sm font-semibold text-emerald-900/55 hover:text-[#1F8A54] transition">
+    <main className="container-width relative z-10 py-10 md:py-14">
+      <div className="site-background" aria-hidden="true">
+        <div className="site-background__grid" />
+        <div className="site-background__orb site-background__orb--left" />
+        <div className="site-background__orb site-background__orb--right" />
+      </div>
+
+      <Link href="/#projects" className="text-sm font-semibold text-ink-faint transition hover:text-blue-bright">
         &larr; Back to Projects
       </Link>
 
       <div className="mt-5 flex items-start gap-4">
         <div
-          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] border shadow-[0_16px_36px_rgba(31,138,84,0.12)]"
+          className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border"
           style={{
             background: project.logoBackground,
-            borderColor: "rgba(21, 91, 56, 0.1)",
+            borderColor: "rgba(148, 163, 184, 0.18)",
           }}
         >
           <span className="text-lg font-extrabold tracking-[-0.04em]" style={{ color: project.logoAccent }}>
@@ -45,22 +52,24 @@ export default function ProjectDetailsPage({ params }: Props) {
           </span>
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-emerald-950 md:text-4xl">{project.title}</h1>
-          <p className="mt-3 max-w-3xl text-emerald-900/65">{project.details}</p>
-          <p className="mt-3 text-sm text-emerald-900/55">
-            {availability.length ? `Available on ${availability.join(", ")}` : "Private case study"}
-          </p>
-          {project.published && project.publishedDate ? (
-            <p className="mt-2 text-sm font-semibold text-[#1F8A54]/65">
-              Published: {project.publishedDate}
+          <h1 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h1>
+          <p className="mt-3 max-w-3xl text-ink-muted">{project.details}</p>
+          {isPublishingOnly ? (
+            <p className="mt-3 text-sm font-medium text-blue-bright">{project.roleSummary}</p>
+          ) : (
+            <p className="mt-3 text-sm text-ink-faint">
+              {availability.length ? `Available on ${availability.join(", ")}` : "Private case study"}
             </p>
+          )}
+          {project.published && project.publishedDate ? (
+            <p className="mt-2 text-sm font-semibold text-blue-bright">Published: {project.publishedDate}</p>
           ) : null}
         </div>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
         {project.stack.map((item) => (
-          <span key={item} className="rounded-full border border-emerald-900/10 bg-white/75 px-3 py-1.5 text-[#1F8A54]">
+          <span key={item} className="skill-tag">
             {item}
           </span>
         ))}
@@ -74,24 +83,24 @@ export default function ProjectDetailsPage({ params }: Props) {
             alt={`${project.title} screenshot`}
             width={720}
             height={1600}
-            className="h-auto w-full rounded-xl border border-emerald-900/10"
+            className="h-auto w-full rounded-xl border border-white/10"
           />
         ))}
       </div>
 
       <div className="mt-8 flex flex-wrap gap-3 text-sm font-semibold">
         {project.github ? (
-          <a href={project.github} target="_blank" rel="noreferrer" className="rounded-lg border border-emerald-900/10 bg-white/75 px-4 py-2 text-emerald-900/72 hover:border-[#1F8A54]/40 hover:text-[#1F8A54] transition">
+          <a href={project.github} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-sm">
             GitHub
           </a>
         ) : null}
         {project.playStore ? (
-          <a href={project.playStore} target="_blank" rel="noreferrer" className="rounded-lg border border-emerald-900/10 bg-white/75 px-4 py-2 text-emerald-900/72 hover:border-[#1F8A54]/40 hover:text-[#1F8A54] transition">
+          <a href={project.playStore} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-sm">
             Play Store
           </a>
         ) : null}
         {project.appStore ? (
-          <a href={project.appStore} target="_blank" rel="noreferrer" className="rounded-lg border border-emerald-900/10 bg-white/75 px-4 py-2 text-emerald-900/72 hover:border-[#1F8A54]/40 hover:text-[#1F8A54] transition">
+          <a href={project.appStore} target="_blank" rel="noreferrer" className="btn-secondary px-4 py-2 text-sm">
             App Store
           </a>
         ) : null}
