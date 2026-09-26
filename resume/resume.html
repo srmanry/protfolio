@@ -43,10 +43,11 @@
   li { position: relative; padding-left: 4.5mm; margin-bottom: 0.7mm; }
   li::before { content: "•"; position: absolute; left: 0.8mm; }
 
-  .projects { display: grid; grid-template-columns: 1fr 30mm 34mm; row-gap: 1.1mm; }
-  .projects .name { font-weight: 700; }
-  .projects .platform { text-align: center; color: #333; }
-  .projects .store { text-align: right; color: #2f5a36; }
+  .highlights { display: grid; grid-template-columns: repeat(4, 1fr); background: #eef4ef; padding: 3mm 2mm; text-align: center; }
+  .highlights strong { display: block; font-size: 13pt; font-weight: 800; color: #2f5a36; }
+  .highlights span { display: block; font-size: 8.8pt; color: #333; margin-top: 0.8mm; }
+  .github b { color: #2f5a36; }
+  .github a { color: #2f5a36; font-weight: 700; text-decoration: none; }
 
   .skills div { margin-bottom: 1.1mm; }
   .skills b { color: #2f5a36; }
@@ -96,17 +97,18 @@
   </section>
 
   <section>
-    <h2>Project</h2>
-    <h3>Published Project</h3>
-    <div class="projects">
-      <span class="name">WalletFlow – Money Management &amp; Invoice Creator</span><span class="platform">Android</span><span class="store">Google Play Store</span>
-      <span class="name">Spotem365 – Google Map Report Management App</span><span class="platform">Android &amp; iOS</span><span class="store">Google Play Store</span>
-      <span class="name">Build Studio – Project Management App</span><span class="platform">iOS</span><span class="store">App Store</span>
-      <span class="name">NVF – Project Management App</span><span class="platform">iOS</span><span class="store">App Store</span>
-      <span class="name">Fish Hunter TDB – Offline Mobile Game</span><span class="platform">Android</span><span class="store">Google Play Store</span>
-      <span class="name">Snooze LLC – AI Sleep Tracking &amp; Smart Alarm App</span><span class="platform">iOS</span><span class="store">App Store</span>
-      <span class="name">Sharpos Mobile – Business / POS App</span><span class="platform">Android &amp; iOS</span><span class="store">App Store</span>
+    <h2>Professional Highlights</h2>
+    <div class="highlights">
+      <div><strong>15+</strong><span>Apps Published</span></div>
+      <div><strong>Android + iOS</strong><span>Production Releases</span></div>
+      <div><strong>Google + Apple</strong><span>Store Deployment</span></div>
+      <div><strong>Flutter</strong><span>Cross-Platform Development</span></div>
     </div>
+  </section>
+
+  <section>
+    <h2>GitHub &amp; Project Portfolio</h2>
+    <div class="github"><b>GitHub:</b> <a href="https://github.com/srmanry">github.com/srmanry</a> &nbsp;|&nbsp; Source code, Flutter projects, experiments, and development work.</div>
   </section>
 </div>
 
