@@ -9,20 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#0B1220",
-        "navy-deep": "#070B14",
-        blue: "#2563EB",
-        "blue-bright": "#38BDF8",
-        ink: "#FFFFFF",
-        "ink-muted": "#CBD5E1",
-        "ink-faint": "#94A3B8"
+        ink: "var(--text)",
+        "ink-muted": "var(--text-muted)",
+        "ink-faint": "var(--text-faint)",
+        line: "var(--line)",
+        surface: "var(--surface)",
+        "surface-soft": "var(--surface-soft)",
+        accent: "var(--accent)",
+        "blue-bright": "var(--accent-text)"
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "Inter", "sans-serif"]
-      },
-      boxShadow: {
-        card: "0 20px 45px -25px rgba(0, 0, 0, 0.6)",
-        glow: "0 0 0 1px rgba(37, 99, 235, 0.4), 0 12px 40px -8px rgba(37, 99, 235, 0.45)"
       }
     }
   },

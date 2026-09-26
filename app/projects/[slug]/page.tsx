@@ -29,11 +29,7 @@ export default function ProjectDetailsPage({ params }: Props) {
 
   return (
     <main className="container-width relative z-10 py-10 md:py-14">
-      <div className="site-background" aria-hidden="true">
-        <div className="site-background__grid" />
-        <div className="site-background__orb site-background__orb--left" />
-        <div className="site-background__orb site-background__orb--right" />
-      </div>
+      <div className="site-background" aria-hidden="true" />
 
       <Link href="/#projects" className="text-sm font-semibold text-ink-faint transition hover:text-blue-bright">
         &larr; Back to Projects
@@ -44,7 +40,7 @@ export default function ProjectDetailsPage({ params }: Props) {
           className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border"
           style={{
             background: project.logoBackground,
-            borderColor: "rgba(148, 163, 184, 0.18)",
+            borderColor: "var(--line)",
           }}
         >
           <span className="text-lg font-extrabold tracking-[-0.04em]" style={{ color: project.logoAccent }}>
@@ -52,7 +48,7 @@ export default function ProjectDetailsPage({ params }: Props) {
           </span>
         </div>
         <div>
-          <h1 className="text-3xl font-bold text-white md:text-4xl">{project.title}</h1>
+          <h1 className="text-3xl font-bold text-ink md:text-4xl">{project.title}</h1>
           <p className="mt-3 max-w-3xl text-ink-muted">{project.details}</p>
           {isPublishingOnly ? (
             <p className="mt-3 text-sm font-medium text-blue-bright">{project.roleSummary}</p>
@@ -83,7 +79,7 @@ export default function ProjectDetailsPage({ params }: Props) {
             alt={`${project.title} screenshot`}
             width={720}
             height={1600}
-            className="h-auto w-full rounded-xl border border-white/10"
+            className="h-auto w-full rounded-xl border border-line"
           />
         ))}
       </div>
