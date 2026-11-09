@@ -19,6 +19,7 @@ import {
   Briefcase,
   CreditCard,
   Download,
+  FileText,
   FolderGit2,
   GraduationCap,
   KeyRound,
@@ -26,7 +27,6 @@ import {
   Mail,
   MapPin,
   Megaphone,
-  Phone,
   Send,
   Sparkles,
   User,
@@ -50,12 +50,20 @@ function LinkedinIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+function WhatsappIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2a9.84 9.84 0 0 0-8.49 14.78L2 22l5.36-1.5A9.96 9.96 0 1 0 12.04 2Zm0 17.91a8.09 8.09 0 0 1-4.12-1.13l-.3-.18-3.18.89.85-3.1-.2-.32a8.01 8.01 0 1 1 6.95 3.84Zm4.44-6.04c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.55.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21a7.3 7.3 0 0 1-1.36-1.69c-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.55-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z" />
+    </svg>
+  );
+}
+
 const tabs = [
-  { id: "me", label: "Me", Icon: User },
-  { id: "experience", label: "Experience", Icon: Briefcase },
-  { id: "projects", label: "Projects", Icon: FolderGit2 },
-  { id: "skills", label: "Skills", Icon: Layers },
-  { id: "contact", label: "Contact", Icon: Mail },
+  { id: "me", label: "Me", mobileLabel: "Me", Icon: User },
+  { id: "experience", label: "Experience", mobileLabel: "Work", Icon: Briefcase },
+  { id: "projects", label: "Projects", mobileLabel: "Projects", Icon: FolderGit2 },
+  { id: "skills", label: "Skills", mobileLabel: "Skills", Icon: Layers },
+  { id: "contact", label: "Contact", mobileLabel: "Contact", Icon: Mail },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
@@ -253,43 +261,19 @@ function ContactPanel() {
     window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
-  const channels = [
-    { label: "Email", value: profile.email, href: `mailto:${profile.email}`, Icon: Mail },
-    { label: "Phone", value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, "")}`, Icon: Phone },
-    { label: "Location", value: profile.location, Icon: MapPin },
-  ];
-
   return (
-    <div className="grid gap-4 md:grid-cols-[0.85fr_1.15fr]">
-      <div className="surface-card p-6">
-        <p className="panel-title">Get in touch</p>
-        <p className="mt-3 text-sm leading-6 text-ink-muted">
-          Open to Flutter projects, full-time roles, and freelance work. The fastest way to reach me is email.
-        </p>
-        <div className="mt-5 grid gap-4">
-          {channels.map(({ label, value, href, Icon }) => {
-            const content = (
-              <>
-                <span className="feature-icon">
-                  <Icon size={18} />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-xs text-ink-faint">{label}</p>
-                  <p className="truncate text-sm font-semibold text-ink">{value}</p>
-                </div>
-              </>
-            );
-            return href ? (
-              <a key={label} href={href} className="flex items-center gap-3 hover:opacity-80">
-                {content}
-              </a>
-            ) : (
-              <div key={label} className="flex items-center gap-3">
-                {content}
-              </div>
-            );
-          })}
+    <div className="grid gap-4">
+      <div className="surface-card flex flex-wrap items-center gap-4 p-5">
+        <span className="feature-icon">
+          <FileText size={18} />
+        </span>
+        <div className="min-w-[13rem] flex-1">
+          <p className="font-bold text-ink">Job Application CV</p>
+          <p className="text-sm text-ink-faint">One-page general CV for Flutter and mobile developer roles.</p>
         </div>
+        <a href="/resume-general.pdf" download="Suman-Roy-Flutter-Developer-CV.pdf" className="btn-secondary w-full justify-center sm:w-auto">
+          <Download size={16} /> Download
+        </a>
       </div>
 
       <form onSubmit={onSubmit} className="surface-card grid gap-4 p-6" aria-label="Contact form">
@@ -348,45 +332,49 @@ export default function HomePage() {
   const selectTab = (id: TabId) => {
     setActive(id);
     history.replaceState(null, "", `#${id}`);
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      requestAnimationFrame(() => {
+        document.getElementById("portfolio-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
   };
 
   const Panel = panels[active];
 
   return (
-    <main className="relative min-h-screen pb-16">
+    <main className="relative min-h-screen pb-28 md:pb-16">
       <div className="site-background" aria-hidden="true" />
 
-      <div className="container-width relative z-10 pt-16 md:pt-20">
+      <div className="container-width relative z-10 pt-5 md:pt-20">
         {/* ---------- PROFILE CARD ---------- */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="surface-card mx-auto max-w-3xl overflow-hidden"
+          className="surface-card mx-auto max-w-3xl overflow-hidden rounded-[1.75rem] md:rounded-2xl"
         >
-          <div className="h-24 bg-[linear-gradient(120deg,var(--accent-soft),transparent_60%),radial-gradient(circle_at_85%_20%,var(--accent-soft),transparent_45%)] md:h-28" />
+          <div className="profile-cover h-24 md:h-28" />
 
-          <div className="px-6 pb-6 md:px-8 md:pb-8">
-            <div className="-mt-14 flex flex-col items-center gap-5 text-center md:-mt-16 md:flex-row md:items-end md:text-left">
+          <div className="px-4 pb-5 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
+            <div className="-mt-12 flex flex-col items-center gap-4 text-center md:-mt-16 md:flex-row md:items-end md:gap-5 md:text-left">
               <div className="relative shrink-0">
-                <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-surface bg-surface-soft shadow-lg md:h-32 md:w-32">
+                <div className="h-24 w-24 overflow-hidden rounded-full border-4 border-surface bg-surface-soft shadow-lg md:h-32 md:w-32">
                   <Image src="/profile-nav.png" alt={profile.name} width={256} height={256} priority className="h-full w-full object-cover" />
                 </div>
                 <span
-                  className="absolute bottom-2 right-2 h-4 w-4 rounded-full border-2 border-surface bg-[var(--success)]"
+                  className="absolute bottom-1.5 right-1.5 h-4 w-4 rounded-full border-2 border-surface bg-[var(--success)] md:bottom-2 md:right-2"
                   title="Available for work"
                 />
               </div>
 
               <div className="min-w-0 flex-1">
                 <h1 className="text-2xl font-extrabold tracking-[-0.02em] text-ink md:text-3xl">{profile.name}</h1>
-                <p className="mt-0.5 font-semibold text-blue-bright">{profile.role}</p>
                 <p className="mt-1.5 inline-flex items-center gap-1.5 text-sm text-ink-faint">
                   <MapPin size={14} /> {profile.location}
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="grid w-full max-w-[19rem] grid-cols-[repeat(4,2.5rem)_minmax(4.75rem,1fr)] items-center justify-center gap-2 md:flex md:w-auto md:max-w-none">
                 <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="icon-btn">
                   <GithubIcon />
                 </a>
@@ -396,15 +384,24 @@ export default function HomePage() {
                 <a href={`mailto:${profile.email}`} aria-label="Email" className="icon-btn">
                   <Mail size={18} />
                 </a>
-                <a href="/resume.pdf" download="Suman-Roy-Resume.pdf" className="btn-primary">
+                <a
+                  href={profile.whatsapp}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="WhatsApp"
+                  className="icon-btn"
+                >
+                  <WhatsappIcon />
+                </a>
+                <a href="/resume.pdf" download="Suman-Roy-Resume.pdf" className="btn-primary justify-center px-3 md:px-5">
                   <Download size={16} /> CV
                 </a>
               </div>
             </div>
 
-            <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-4">
+            <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:mt-7 md:grid-cols-4 md:rounded-xl">
               {highlights.map((item) => (
-                <div key={item.label} className="bg-surface-soft px-3 py-4 text-center">
+                <div key={item.label} className="flex min-h-20 flex-col justify-center bg-surface-soft px-2 py-3 text-center md:min-h-0 md:px-3 md:py-4">
                   <p className="text-base font-extrabold text-ink md:text-lg">{item.value}</p>
                   <p className="mt-0.5 text-xs text-ink-faint">{item.label}</p>
                 </div>
@@ -414,9 +411,9 @@ export default function HomePage() {
         </motion.section>
 
         {/* ---------- TABS ---------- */}
-        <div className="sticky top-3 z-40 mx-auto mt-8 max-w-3xl md:top-5">
+        <div className="mobile-tab-dock fixed inset-x-3 bottom-3 z-40 mx-auto max-w-3xl md:sticky md:inset-x-auto md:bottom-auto md:top-5 md:mt-8">
           <nav className="tab-bar" aria-label="Portfolio sections" role="tablist">
-            {tabs.map(({ id, label, Icon }) => {
+            {tabs.map(({ id, label, mobileLabel, Icon }) => {
               const selected = active === id;
               return (
                 <button
@@ -430,8 +427,10 @@ export default function HomePage() {
                   {selected ? (
                     <motion.span layoutId="tab-pill" className="tab-pill" transition={{ type: "spring", stiffness: 420, damping: 34 }} />
                   ) : null}
-                  <span className="relative z-10 flex flex-col items-center gap-1 sm:flex-row sm:gap-2">
-                    <Icon size={16} /> {label}
+                  <span className="relative z-10 flex flex-col items-center gap-1 md:flex-row md:gap-2">
+                    <Icon size={16} />
+                    <span className="md:hidden">{mobileLabel}</span>
+                    <span className="hidden md:inline">{label}</span>
                   </span>
                 </button>
               );
@@ -440,7 +439,7 @@ export default function HomePage() {
         </div>
 
         {/* ---------- PANEL ---------- */}
-        <div className="mx-auto mt-6 max-w-3xl">
+        <div id="portfolio-panel" className="mx-auto mt-5 max-w-3xl scroll-mt-4 md:mt-6 md:scroll-mt-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -456,7 +455,7 @@ export default function HomePage() {
         </div>
 
         <footer className="mx-auto mt-14 max-w-3xl border-t border-line pt-6 text-center text-sm text-ink-faint">
-          © 2026 {profile.name} · Flutter Developer
+          © 2026 {profile.name} · {profile.role}
         </footer>
       </div>
     </main>

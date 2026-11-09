@@ -11,8 +11,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Suman Roy | Flutter Developer Portfolio",
-  description: "Portfolio of Suman Roy, a Flutter Developer experienced in building, testing, and publishing real-world mobile apps with Flutter, Dart, and Firebase."
+  title: "Suman Roy | Mobile & Application Developer",
+  description: "Portfolio of Suman Roy, a Mobile & Application Developer experienced in building, testing, and publishing real-world apps with Flutter, Dart, Firebase, APIs, and automation."
 };
 
 // Runs before paint so the saved or system theme applies without a flash.

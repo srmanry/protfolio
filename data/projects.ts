@@ -22,6 +22,47 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
+    slug: "prophetic-pathway",
+    title: "Prophetic Pathway",
+    icon: "✨",
+    category: "project",
+    logoText: "PP",
+    logoAccent: "#7c3aed",
+    logoBackground: "linear-gradient(135deg, #ede9fe 0%, #faf5ff 100%)",
+    tagline: "Spiritual Advisor Consultation App",
+    cardSummary:
+      "One-on-one spiritual guidance through live chat, voice, and video, with advisor booking, wallet payments, subscriptions, and AI session summaries.",
+    summary:
+      "A consultation platform connecting users with verified spiritual advisors for personalized guidance and flexible live sessions.",
+    details:
+      "Prophetic Pathway, also known as EJ PPathway, connects users with verified spiritual advisors for one-on-one consultations through real-time chat, voice calls, and video calls. Users can browse advisor profiles, ratings, and reviews, receive matches based on their preferences and language, and book, reschedule, or cancel sessions. An in-app wallet supports top-ups and per-minute session payments, while subscription plans offer options for regular consultations. Session notes and AI-generated summaries help users revisit their conversations, and notifications provide session reminders and advisor availability updates. Available on Android and iOS.",
+    stack: ["Live Chat", "Voice & Video Calls", "Session Booking", "In-App Wallet", "Subscriptions", "AI Summaries"],
+    screenshots: [],
+    playStore: "https://play.google.com/store/apps/details?id=com.prophetic.ppathway",
+    appStore: "https://apps.apple.com/us/app/prophetic-pathway/id6774471827",
+    published: true,
+  },
+  {
+    slug: "audioforge",
+    title: "AudioForge",
+    icon: "🎵",
+    category: "project",
+    logoText: "AF",
+    logoAccent: "#c2410c",
+    logoBackground: "linear-gradient(135deg, #ffedd5 0%, #fff7ed 100%)",
+    tagline: "Offline Media Converter & Audio Editor",
+    cardSummary:
+      "Offline audio toolkit to extract audio from video, convert formats, trim, merge, and compress files with private on-device processing.",
+    summary:
+      "An offline media converter and audio editor for everyday tasks, from creating ringtones to combining voice clips and saving storage.",
+    details:
+      "AudioForge brings everyday audio editing and media conversion into one simple offline workflow. Users can extract audio from videos, convert between popular audio formats, trim unwanted sections, merge multiple files, and compress audio to reduce storage use. All processing happens directly on the device without uploading media, supporting private, fast access to editing tools. Whether creating a ringtone, combining voice clips, or reducing file sizes, the app keeps each task straightforward with a clean, user-friendly interface. Available on Android.",
+    stack: ["Audio Extraction", "Format Conversion", "Audio Trimming", "Audio Merging", "Audio Compression", "Offline Processing"],
+    screenshots: [],
+    playStore: "https://play.google.com/store/apps/details?id=com.sumanry.audioforge",
+    published: true,
+  },
+  {
     slug: "walletflow",
     title: "WalletFlow",
     icon: "💸",

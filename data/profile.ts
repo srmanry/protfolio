@@ -1,9 +1,9 @@
 export const profile = {
   name: "Suman Roy",
-  role: "Flutter Developer",
+  role: "Mobile & Application Developer",
   location: "Dhaka, Bangladesh",
-  email: "sumanry402@gmail.com",
-  phone: "+88 01580498155",
+  email: "sumantachtg@gmail.com",
+  whatsapp: "https://wa.me/8801580498155",
   github: "https://github.com/srmanry",
   linkedin: "https://www.linkedin.com/in/suman-roy-b4121a274",
   summary:
@@ -30,7 +30,7 @@ export const experience = {
   role: "Flutter Developer",
   company: "Scale Up Ads Agency",
   location: "43 Mohakhali C/A, Dhaka 1212",
-  duration: "20 Jul 2025 — Present",
+  duration: "20 Jul 2025 — 30 Dec 2026",
   responsibilities: [
     "Develop and maintain cross-platform mobile applications using Flutter and Dart.",
     "Implement responsive, user-friendly interfaces based on Figma/UI requirements.",
